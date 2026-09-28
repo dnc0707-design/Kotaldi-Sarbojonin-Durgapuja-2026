@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কোটালডি সর্বজনীন দুর্গাপূজা ২০২৬ | Kotaldi Sarbajonin Durga Puja</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Bengali and English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Config for Custom Colors and Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        puja: {
+                            red: '#E52B00',
+                            darkred: '#7f1d1d',
+                            maroon: '#450a0a',
+                            gold: '#FBC222',
+                            orange: '#F97E04',
+                            cream: '#FFF5E3'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Noto Serif Bengali"', 'serif'],
+                        body: ['"Hind Siliguri"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Noto Serif Bengali', serif;
+        }
+        
+        /* Custom Background Pattern for Hero Section */
+        .hero-pattern {
+            background-color: #7f1d1d;
+            background-image: 
+                radial-gradient(circle at center, rgba(69, 10, 10, 0.4) 0%, rgba(69, 10, 10, 0.9) 100%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FBC222' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: cover, 60px 60px;
+            background-attachment: fixed, fixed;
+        }
+
+        /* Subtle Background for Sections */
+        .section-pattern {
+            background-color: #FFF5E3;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FBC222' fill-opacity='0.15' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism for Navbar */
+        .glass-nav {
+            background: rgba(127, 29, 29, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(251, 194, 34, 0.2);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF5E3; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7f1d1d; 
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E52B00; 
+        }
+        
+        /* Toast Notification */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+        #toast.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body class="bg-puja-cream text-gray-800 antialiased selection:bg-puja-red selection:text-white flex flex-col min-h-screen">
+
+<div id="public-view" class="flex-grow transition-opacity duration-300">
+    
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 glass-nav shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo / Title -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="https://raw.githubusercontent.com/dnc0707-design/Kotaldi-Sarbojonin-Durgapuja-2026/main/images.png" alt="Maa Durga Logo" class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-2xl">
+                    <div>
+                        <h1 class="text-white font-heading text-lg md:text-xl font-bold leading-tight">কোটালডি সর্বজনীন</h1>
+                        <p class="text-puja-gold text-[10px] md:text-xs tracking-wider">দুর্গোৎসব ২০২৬</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-5 xl:space-x-8 items-center">
+                    <a href="#home" class="text-white hover:text-puja-gold transition-colors text-sm xl:text-base font-medium">হোম</a>
+                    <a href="#events" class="text-white hover:text-puja-gold transition-colors text-sm xl:text-base font-medium">অনুষ্ঠান</a>
+                    <a href="#participate" class="text-white hover:text-puja-gold transition-colors text-sm xl:text-base font-medium">অংশগ্রহণ</a>
+                    <a href="#participants-list" class="text-white hover:text-puja-gold transition-colors text-sm xl:text-base font-medium">তালিকা</a>
+                    <a href="#panjika" class="text-white hover:text-puja-gold transition-colors text-sm xl:text-base font-medium">নির্ঘণ্ট</a>
+                    <a href="#committee" class="text-white hover:text-puja-gold transition-colors text-sm xl:text-base font-medium">কমিটি</a>
+                    <a href="#gallery" class="text-white hover:text-puja-gold transition-colors text-sm xl:text-base font-medium">গ্যালারি</a>
+                    <button onclick="openLoginModal()" class="bg-puja-gold text-puja-darkred px-4 py-2 rounded-full font-bold hover:bg-white transition-colors shadow-md flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-user-shield"></i> অ্যাডমিন
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-puja-gold hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-puja-darkred border-t border-puja-maroon shadow-inner absolute w-full left-0">
+            <div class="px-4 pt-2 pb-4 space-y-1 sm:px-3">
+                <a href="#home" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-puja-maroon">হোম (Home)</a>
+                <a href="#events" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-puja-maroon">অনুষ্ঠান (Events)</a>
+                <a href="#participate" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-puja-maroon">অংশগ্রহণ (Participate)</a>
+                <a href="#participants-list" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-puja-maroon">তালিকা (Participants List)</a>
+                <a href="#panjika" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-puja-maroon">নির্ঘণ্ট (Schedule)</a>
+                <a href="#committee" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-puja-maroon">কমিটি (Committee)</a>
+                <a href="#gallery" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-puja-maroon">গ্যালারি (Gallery)</a>
+                <button onclick="openLoginModal()" class="w-full text-left text-puja-gold block px-3 py-2 rounded-md text-base font-bold hover:bg-puja-maroon mt-2 border-t border-puja-maroon pt-2">
+                    <i class="fa-solid fa-user-shield mr-2"></i> অ্যাডমিন লগইন (Admin)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-20 pb-32 lg:pt-32 lg:pb-48 hero-pattern overflow-hidden min-h-[90vh] flex items-center justify-center">
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 left-10 opacity-30 text-puja-gold animate-pulse">
+            <i class="fa-solid fa-bell text-5xl"></i>
+        </div>
+        <div class="absolute bottom-20 right-10 opacity-30 text-puja-gold animate-pulse" style="animation-delay: 1s;">
+            <i class="fa-solid fa-bell text-6xl"></i>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
+            <span class="inline-block bg-puja-gold text-puja-darkred px-6 py-1.5 rounded-full font-bold text-sm md:text-base mb-4 shadow-lg border border-puja-orange/50 tracking-widest mt-12">৩য় বর্ষ</span>
+            <br>
+            <h3 class="text-puja-gold text-lg md:text-xl font-bold tracking-widest uppercase mb-4 drop-shadow-md">শারদীয়া শুভেচ্ছা</h3>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-extrabold text-white mb-6 drop-shadow-lg leading-tight">
+                কোটালডি সর্বজনীন <br> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-puja-gold via-yellow-200 to-puja-orange">দুর্গাপূজা ২০২৬</span>
+            </h1>
+            <p id="marquee-text" class="mt-4 text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto font-medium drop-shadow-md">
+                মায়ের আগমনে আনন্দে মাতুক চারিদিক, উৎসবের এই পুণ্যলগ্নে আপনাদের জানাই সাদর আমন্ত্রণ।
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="mt-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 inline-block shadow-2xl">
+                <h4 class="text-white font-heading text-xl mb-4 border-b border-white/20 pb-2 inline-block">মায়ের বোধন আর মাত্র</h4>
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8 text-center mt-4">
+                    <div class="flex flex-col items-center">
+                        <span id="days" class="text-4xl md:text-5xl font-bold text-puja-gold bg-puja-maroon/80 w-20 h-20 md:w-24 md:h-24 rounded-xl flex items-center justify-center shadow-inner border border-puja-gold/30">00</span>
+                        <span class="text-white mt-2 font-medium">দিন</span>
+                    </div>
+                    <div class="text-3xl font-bold text-puja-gold self-start mt-4 hidden md:block">:</div>
+                    <div class="flex flex-col items-center">
+                        <span id="hours" class="text-4xl md:text-5xl font-bold text-puja-gold bg-puja-maroon/80 w-20 h-20 md:w-24 md:h-24 rounded-xl flex items-center justify-center shadow-inner border border-puja-gold/30">00</span>
+                        <span class="text-white mt-2 font-medium">ঘণ্টা</span>
+                    </div>
+                    <div class="text-3xl font-bold text-puja-gold self-start mt-4 hidden md:block">:</div>
+                    <div class="flex flex-col items-center">
+                        <span id="minutes" class="text-4xl md:text-5xl font-bold text-puja-gold bg-puja-maroon/80 w-20 h-20 md:w-24 md:h-24 rounded-xl flex items-center justify-center shadow-inner border border-puja-gold/30">00</span>
+                        <span class="text-white mt-2 font-medium">মিনিট</span>
+                    </div>
+                    <div class="text-3xl font-bold text-puja-gold self-start mt-4 hidden md:block">:</div>
+                    <div class="flex flex-col items-center">
+                        <span id="seconds" class="text-4xl md:text-5xl font-bold text-puja-gold bg-puja-maroon/80 w-20 h-20 md:w-24 md:h-24 rounded-xl flex items-center justify-center shadow-inner border border-puja-gold/30">00</span>
+                        <span class="text-white mt-2 font-medium">সেকেন্ড</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <a href="#panjika" class="inline-block bg-gradient-to-r from-puja-red to-puja-orange text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all border border-puja-gold/50">
+                    পূজা নির্ঘণ্ট দেখুন <i class="fa-solid fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Bottom Wave Curve -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 text-puja-cream">
+            <svg class="relative block w-full h-12 md:h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.85,121.22,201.2,112.5,242.44,107.41,282.8,92.17,321.39,56.44Z" fill="currentColor"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Sponsors & Advertisers Section (High Visibility) -->
+    <section id="sponsors" class="py-10 bg-puja-cream relative border-b border-gray-200 shadow-sm z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 fade-in-up">
+                <span class="text-puja-red font-bold tracking-widest uppercase mb-1 block text-xs md:text-sm"><i class="fa-solid fa-handshake mr-2"></i>আমাদের সহযোগী (Our Proud Sponsors)</span>
+                <h2 class="text-2xl md:text-3xl font-heading font-bold text-gray-900">সম্মানিত বিজ্ঞাপনদাতা</h2>
+                <div class="h-1 w-16 bg-puja-gold mx-auto rounded-full mt-2"></div>
+            </div>
+            
+            <!-- Sponsors Grid -->
+            <div id="sponsors-grid" class="flex flex-wrap justify-center items-center gap-6 md:gap-10 fade-in-up">
+                <!-- Javascript will inject sponsor banners and videos here -->
+            </div>
+            
+            <div class="text-center mt-8">
+                <p class="text-xs md:text-sm text-gray-500 italic">বিজ্ঞাপন দিতে যোগাযোগ করুন: +91 7980230656</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-20 bg-puja-darkred relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cpath d=\\'M54.627 0l.83.83-53.797 53.797-.83-.83L54.627 0zM29.627 0l.83.83-28.797 28.797-.83-.83L29.627 0zM4.627 0l.83.83-3.797 3.797-.83-.83L4.627 0zM59.627 5l.83.83-53.797 53.797-.83-.83L59.627 5zM59.627 30l.83.83-28.797 28.797-.83-.83L59.627 30z\\' fill=\\'%23FBC222\\' fill-rule=\\'evenodd\\'/%3E%3C/svg%3E');"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up">
+                    <span class="text-puja-gold font-bold tracking-widest uppercase mb-2 block"><i class="fa-solid fa-music mr-2"></i>বিশেষ আকর্ষণ</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight">হৈ হুল্লোড় জমজমাট পূজা প্রাঙ্গণে এবার অনুষ্ঠানের মেলা!</h2>
+                    <div class="h-1 w-24 bg-puja-gold rounded-full mb-8"></div>
+                    
+                    <p class="text-lg text-gray-200 leading-relaxed mb-8">
+                        কোটালডি সর্বজনীন দুর্গাপূজার ৩য় বর্ষে আপনাদের আনন্দকে আরও দ্বিগুণ করতে আমরা আয়োজন করেছি এক বর্ণাঢ্য সাংস্কৃতিক অনুষ্ঠানের। প্রতিদিন থাকছে নামিদামি শিল্পীদের মনোমুগ্ধকর পরিবেশনা। আপনারাও সামিল হোন এই আনন্দ উৎসবে।
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <!-- 17th Oct: Maha Shashthi -->
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
+                            <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
+                                <i class="fa-solid fa-ribbon text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-puja-gold text-sm font-bold uppercase tracking-wider mb-1">১৭ অক্টোবর (মহা ষষ্ঠী), শনিবার</h4>
+                                <h3 class="text-white text-lg md:text-xl font-bold">উদ্বোধনী অনুষ্ঠান</h3>
+                            </div>
+                        </div>
+
+                        <!-- 18th Oct: Maha Saptami -->
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
+                            <div class="w-14 h-14 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
+                                <i class="fa-solid fa-users text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-puja-gold text-sm font-bold uppercase tracking-wider mb-1">১৮ অক্টোবর (মহা সপ্তমী), রবিবার</h4>
+                                <h3 class="text-white text-lg md:text-xl font-bold">নৃত্যানুষ্ঠান ও সঙ্গীতানুষ্ঠান</h3>
+                                <p class="text-gray-300 text-sm mt-1">আঞ্চলিক শিল্পী সমন্বয়ে সঙ্গীতানুষ্ঠান এবং বিশিষ্ট শিল্পী গোষ্ঠীর পরিবেশনায় নৃত্যানুষ্ঠান।</p>
+                            </div>
+                        </div>
+
+                        <!-- 19th Oct: Maha Ashtami -->
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
+                            <div class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
+                                <i class="fa-solid fa-music text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-puja-gold text-sm font-bold uppercase tracking-wider mb-1">১৯ অক্টোবর (মহা অষ্টমী), সোমবার</h4>
+                                <h3 class="text-white text-lg md:text-xl font-bold">রঙিন সঙ্গীত জলসা</h3>
+                                <p class="text-gray-300 text-sm mt-1">আঞ্চলিক শিল্পী সমন্বয়ে বিশেষ পরিবেশনা।</p>
+                            </div>
+                        </div>
+
+                        <!-- 20th Oct: Maha Navami -->
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
+                                <i class="fa-solid fa-guitar text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-puja-gold text-sm font-bold uppercase tracking-wider mb-1">২০ অক্টোবর (মহা নবমী), মঙ্গলবার</h4>
+                                <h3 class="text-white text-xl font-bold">বাংলা ব্যান্ড - <span class="text-puja-gold text-2xl">শ্রীকান্ত ও বন্ধুরা</span></h3>
+                                <p class="text-gray-300 text-sm mt-1">পরিবেশিত বিশেষ সঙ্গীতানুষ্ঠান</p>
+                            </div>
+                        </div>
+
+                        <!-- 21st Oct: Maha Dashami -->
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
+                            <div class="w-16 h-16 bg-gradient-to-br from-puja-orange to-puja-red rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
+                                <i class="fa-solid fa-microphone-lines text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-puja-gold text-sm font-bold uppercase tracking-wider mb-1">২১ অক্টোবর (মহা দশমী), বুধবার</h4>
+                                <h3 class="text-white text-xl font-bold">জি সারেগামাপা খ্যাত শিল্পী <span class="text-puja-gold text-2xl">বিপিন রায়</span></h3>
+                                <p class="text-gray-300 text-sm mt-1">পরিবেশিত রঙিন সঙ্গীত জলসা</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up flex justify-center mt-12 lg:mt-0">
+                    <div class="relative max-w-md w-full">
+                        <div class="absolute inset-0 bg-puja-gold transform rotate-3 rounded-2xl shadow-xl"></div>
+                        <img src="https://raw.githubusercontent.com/dnc0707-design/Kotaldi-Sarbojonin-Durgapuja-2026/main/155cf34e-61cb-446e-8de3-e7f486edd644.jpg" onerror="this.src='https://placehold.co/600x800/7f1d1d/FFF5E3?text=Cultural+Program+Poster'" alt="Durga Puja Event Poster 2026" class="relative rounded-2xl shadow-2xl w-full h-auto border-4 border-white transform hover:-translate-y-2 transition-transform duration-500">
+                        <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-puja-orange rounded-full flex items-center justify-center text-white text-center font-bold shadow-lg border-4 border-white animate-bounce">
+                            ৩য়<br>বছর
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Participate Section -->
+    <section id="participate" class="py-20 bg-gray-50 relative overflow-hidden">
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-puja-gold rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-puja-red rounded-full mix-blend-multiply filter blur-3xl opacity-10 transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 fade-in-up">
+                <span class="text-puja-red font-bold tracking-widest uppercase mb-2 block"><i class="fa-solid fa-clipboard-user mr-2"></i>রেজিস্ট্রেশন</span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-6">সাংস্কৃতিক অনুষ্ঠানে অংশগ্রহণ</h2>
+                <div class="h-1 w-24 bg-puja-gold mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-gray-600">আপনি কি আমাদের পূজার মঞ্চে আপনার প্রতিভা প্রদর্শন করতে চান? নিচের ফর্মটি পূরণ করে আজই নাম নথিভুক্ত করুন।</p>
+            </div>
+
+            <form onsubmit="submitParticipationForm(event)" class="bg-white rounded-2xl shadow-xl p-6 md:p-10 border-t-4 border-puja-red max-w-4xl mx-auto fade-in-up">
+                
+                <!-- Event Type & Date -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="event-type">অংশগ্রহণের ধরন (Event Type) <span class="text-red-500">*</span></label>
+                        <select id="event-type" onchange="toggleFormFields()" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all">
+                            <option value="">-- নির্বাচন করুন (Select) --</option>
+                            <option value="solo_dance">একক নৃত্য (Solo Dance)</option>
+                            <option value="group_dance">দলগত নৃত্য (Group Dance)</option>
+                            <option value="karaoke">ক্যারওকে সঙ্গীত (Karaoke Song)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">তারিখ (Preferred Date) <span class="text-red-500">*</span></label>
+                        <select id="event-date" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all">
+                            <option value="">-- নির্বাচন করুন (Select) --</option>
+                            <option value="17_oct">১৭ অক্টোবর (শনিবার)</option>
+                            <option value="18_oct">১৮ অক্টোবর (রবিবার)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Name & Village -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">নাম / দলের নাম (Name / Group Name) <span class="text-red-500">*</span></label>
+                        <input type="text" id="participant-name" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all" placeholder="আপনার বা দলের নাম লিখুন">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">গ্রাম (Village) <span class="text-red-500">*</span></label>
+                        <input type="text" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all" placeholder="গ্রামের নাম">
+                    </div>
+                </div>
+
+                <!-- Phone & Age -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">ফোন নম্বর (Phone Number) <span class="text-red-500">*</span></label>
+                        <input type="tel" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all" placeholder="+91">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                            বয়স বিভাগ (Age Category) <span class="text-gray-500 font-normal text-xs ml-1">(জন্মসাল/DOB YYYY অনুযায়ী)</span> <span class="text-red-500">*</span>
+                        </label>
+                        <select required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all">
+                            <option value="">-- নির্বাচন করুন (Select) --</option>
+                            <option value="under_10">ক-বিভাগ: অনূর্ধ্ব ১০ বছর (Under 10)</option>
+                            <option value="11_to_15">খ-বিভাগ: ১১ - ১৫ বছর (11 - 15 yrs)</option>
+                            <option value="above_16">গ-বিভাগ: ১৬+ বছর (16+ yrs)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Conditional: Group Members -->
+                <div id="group-members-container" class="mb-6 hidden">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">দলের সদস্যদের নাম (Participant Names) <span class="text-red-500">*</span></label>
+                    <textarea id="group-members-input" rows="3" class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all" placeholder="দলের প্রত্যেক সদস্যের নাম কমা (,) দিয়ে লিখুন"></textarea>
+                </div>
+
+                <!-- Conditional: Theme (Optional for Group Dance) -->
+                <div id="theme-container" class="mb-6 hidden">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">থিমের নাম (Theme) <span class="text-gray-400 font-normal ml-1">(ঐচ্ছিক / Optional)</span></label>
+                    <input type="text" id="theme-input" class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all" placeholder="দলের পারফরম্যান্সের থিম (যদি থাকে)">
+                </div>
+
+                <!-- Photo Upload Section -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">ছবি আপলোড (Upload Photo) <span class="text-gray-400 font-normal ml-1">(ঐচ্ছিক / Optional)</span></label>
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50 hover:bg-gray-100 transition-all cursor-pointer" onclick="document.getElementById('file-upload').click()">
+                        <div class="space-y-1 text-center">
+                            <i class="fa-solid fa-image text-3xl text-gray-400 mb-3"></i>
+                            <div class="flex text-sm text-gray-600 justify-center">
+                                <label for="file-upload" class="relative cursor-pointer rounded-md font-medium text-puja-red hover:text-puja-darkred focus-within:outline-none">
+                                    <span class="bg-white px-3 py-1.5 rounded border border-gray-200 shadow-sm inline-block">ছবি নির্বাচন করুন (Choose a photo)</span>
+                                    <input id="file-upload" name="file-upload" type="file" class="sr-only" accept="image/*" onchange="document.getElementById('file-name-display').innerText = this.files[0]?.name || 'PNG, JPG, GIF up to 5MB'">
+                                </label>
+                            </div>
+                            <p id="file-name-display" class="text-xs text-gray-500 mt-3 font-medium">PNG, JPG, GIF up to 5MB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <div id="form-success-message" class="hidden mb-6 bg-green-50 border border-green-200 text-green-700 px-4 py-4 rounded-xl flex items-center justify-center gap-3 font-bold animate-[fadein_0.5s] shadow-sm">
+                        <i class="fa-solid fa-circle-check text-2xl"></i> আবেদন সফলভাবে জমা হয়েছে! (Successfully Submitted)
+                    </div>
+                    <button type="submit" class="bg-gradient-to-r from-puja-red to-puja-orange text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
+                        ফর্ম জমা দিন (Submit) <i class="fa-solid fa-paper-plane ml-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Registered Participants List Section -->
+    <section id="participants-list" class="py-20 bg-white relative border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in-up">
+                <span class="text-puja-red font-bold tracking-widest uppercase mb-2 block"><i class="fa-solid fa-list-check mr-2"></i>Participants</span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4">Registered Participants</h2>
+                <div class="h-1 w-24 bg-puja-gold mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600 text-sm md:text-base">List of participants registered for the cultural programs.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden fade-in-up">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-puja-cream text-puja-darkred text-sm uppercase border-b border-gray-200">
+                                <th class="p-5 font-bold w-20 text-center">Photo</th>
+                                <th class="p-5 font-bold">Name / Group Name</th>
+                                <th class="p-5 font-bold">Category</th>
+                                <th class="p-5 font-bold">Performance Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="participants-table-body" class="text-gray-600 text-sm">
+                            <!-- JS will populate this -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Panjika Section -->
+    <section id="panjika" class="py-20 bg-gray-50 relative">
+        <!-- Decorative border top -->
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-puja-red via-puja-gold to-puja-red"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <span class="text-puja-red font-bold tracking-widest uppercase mb-2 block"><i class="fa-solid fa-calendar-alt mr-2"></i>সময়সূচী</span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-6">পূজা নির্ঘণ্ট ২০২৬</h2>
+                <div class="h-1 w-24 bg-puja-red mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-gray-600">বিশুদ্ধ সিদ্ধান্ত পঞ্জিকা অনুযায়ী ১৪৩৩ বঙ্গাব্দের শারদীয়া দুর্গাপূজার সময়সূচী।</p>
+            </div>
+
+            <!-- This grid will be populated by JavaScript -->
+            <div id="panjika-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Data renders here -->
+            </div>
+            
+            <div class="mt-12 text-center fade-in-up">
+                <p class="text-sm md:text-base text-gray-700 bg-red-50 inline-block px-6 py-4 rounded-xl border border-red-200 shadow-sm font-medium">
+                    <i class="fa-solid fa-om text-puja-red text-xl mr-2 align-middle"></i> 
+                    <strong class="text-puja-darkred">বিশেষ দ্রষ্টব্য (সন্ধিপূজা):</strong> ১৯ অক্টোবর (৬ কার্তিক) সোমবার সকাল ৭:১৬ মিনিট থেকে সকাল ৮:১৪ মিনিটের মধ্যে। 
+                    <br><span class="text-xs text-gray-500 mt-1 block">*বিশুদ্ধ সিদ্ধান্ত পঞ্জিকা ১৪৩৩ বঙ্গাব্দ অনুযায়ী</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Committee Section -->
+    <section id="committee" class="py-20 section-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <span class="text-puja-red font-bold tracking-widest uppercase mb-2 block"><i class="fa-solid fa-users mr-2"></i>পরিচালন সমিতি</span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-6">কোটালডি পূজা কমিটি</h2>
+                <div class="h-1 w-24 bg-puja-gold mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-gray-600">যাঁদের অক্লান্ত পরিশ্রমে ও সদিচ্ছায় আমাদের এই দুর্গোৎসব সর্বাঙ্গীণ সুন্দর হয়ে ওঠে।</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- President -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-b-4 border-puja-red text-center hover:shadow-xl transition-shadow fade-in-up">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-100">
+                        <i class="fa-solid fa-user-tie text-2xl text-puja-red"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 font-heading">নাবিক মণ্ডল</h3>
+                    <p class="text-puja-red font-bold text-xs uppercase tracking-wide mt-1 mb-2">President (সভাপতি)</p>
+                    <div class="text-gray-500 text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone text-puja-gold"></i> +91 9732038457
+                    </div>
+                </div>
+                
+                <!-- Secretary -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-b-4 border-puja-red text-center hover:shadow-xl transition-shadow fade-in-up" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-100">
+                        <i class="fa-solid fa-user-tie text-2xl text-puja-red"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 font-heading">পার্থ সারথী মণ্ডল</h3>
+                    <p class="text-puja-red font-bold text-xs uppercase tracking-wide mt-1 mb-2">Secretary (সম্পাদক)</p>
+                    <div class="text-gray-500 text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone text-puja-gold"></i> +91 9382154067
+                    </div>
+                </div>
+
+                <!-- Vice President -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-b-4 border-puja-gold text-center hover:shadow-xl transition-shadow fade-in-up" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-orange-100">
+                        <i class="fa-solid fa-user-tie text-2xl text-puja-orange"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 font-heading">অমর চন্দ্র নাথ</h3>
+                    <p class="text-puja-orange font-bold text-xs uppercase tracking-wide mt-1 mb-2">Vice-President (সহ-সভাপতি)</p>
+                    <div class="text-gray-500 text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone text-puja-gold"></i> +91 9732317945
+                    </div>
+                </div>
+
+                <!-- Treasurer -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-b-4 border-puja-gold text-center hover:shadow-xl transition-shadow fade-in-up" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-orange-100">
+                        <i class="fa-solid fa-user-tie text-2xl text-puja-orange"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 font-heading">সজল দাস</h3>
+                    <p class="text-puja-orange font-bold text-xs uppercase tracking-wide mt-1 mb-2">Treasurer (কোষাধ্যক্ষ)</p>
+                    <div class="text-gray-500 text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone text-puja-gold"></i> +91 9732246991
+                    </div>
+                </div>
+
+                <!-- Asst Secretary -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-b-4 border-gray-300 text-center hover:shadow-xl transition-shadow fade-in-up">
+                    <h3 class="text-lg font-bold text-gray-900 font-heading">পরিতোষ প্রামাণিক</h3>
+                    <p class="text-gray-600 font-bold text-xs uppercase tracking-wide mt-1">Asst. Secretary</p>
+                    <div class="text-gray-400 text-xs mt-2">8900060412</div>
+                </div>
+
+                <!-- Asst Treasurer -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-b-4 border-gray-300 text-center hover:shadow-xl transition-shadow fade-in-up" style="transition-delay: 100ms;">
+                    <h3 class="text-lg font-bold text-gray-900 font-heading">সৌভিক মণ্ডল</h3>
+                    <p class="text-gray-600 font-bold text-xs uppercase tracking-wide mt-1">Asst. Treasurer</p>
+                </div>
+                
+                <!-- Cultural Secretary -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-b-4 border-gray-300 text-center hover:shadow-xl transition-shadow fade-in-up" style="transition-delay: 200ms;">
+                    <h3 class="text-lg font-bold text-gray-900 font-heading">অশোক সেন</h3>
+                    <p class="text-gray-600 font-bold text-xs uppercase tracking-wide mt-1">Cultural Secretary</p>
+                </div>
+
+                 <!-- Asst Cultural Secretary -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-b-4 border-gray-300 text-center hover:shadow-xl transition-shadow fade-in-up" style="transition-delay: 300ms;">
+                    <h3 class="text-lg font-bold text-gray-900 font-heading">অভিজিৎ প্রামাণিক</h3>
+                    <p class="text-gray-600 font-bold text-xs uppercase tracking-wide mt-1">Asst. Cultural Secretary</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center fade-in-up bg-white p-6 rounded-xl shadow-md border border-gray-100 max-w-4xl mx-auto">
+                <h4 class="font-bold text-puja-darkred mb-2 border-b pb-2 inline-block">সম্মানিত সদস্য ও স্বেচ্ছাসেবী বৃন্দ</h4>
+                <p class="text-gray-600 font-medium leading-relaxed mt-2 text-sm">
+                    দেবেন্দ্র চক্রবর্তী (Asst. Cultural Secretary), সুব্রত নাথ, সুব্রত মণ্ডল, নিমাই মণ্ডল, বাবন প্রামাণিক, শচীন মণ্ডল, উজ্জ্বল মণ্ডল সহ ক্লাবের অন্যান্য সকল সদস্য ও স্বেচ্ছাসেবী বৃন্দ। <br>
+                    আপনাদের সকলের একনিষ্ঠ সহযোগিতায় এই মহোৎসব সম্ভব হয়েছে, সকলকে জানাই আন্তরিক কৃতজ্ঞতা।
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12 fade-in-up">
+                <div>
+                    <span class="text-puja-red font-bold tracking-widest uppercase mb-2 block"><i class="fa-solid fa-images mr-2"></i>স্মৃতিচারণ</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900">গ্যালারি</h2>
+                </div>
+                <div class="hidden md:block h-1 w-32 bg-puja-gold rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Gallery Item 1 -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg h-64 fade-in-up">
+                    <img src="https://placehold.co/600x600/7f1d1d/FFF5E3?text=Idol+Preparation" alt="Idol Preparation" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg border-2 border-white px-4 py-2 rounded">প্রতিমা প্রস্তুতি</span>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg h-64 sm:col-span-2 fade-in-up" style="transition-delay: 100ms;">
+                    <img src="https://placehold.co/1200x600/F97E04/FFF5E3?text=Pandal+Design" alt="Pandal Design" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg border-2 border-white px-4 py-2 rounded">মণ্ডপ সজ্জা</span>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg h-64 fade-in-up" style="transition-delay: 200ms;">
+                    <img src="https://placehold.co/600x600/FBC222/7f1d1d?text=Sindoor+Khela" alt="Sindoor Khela" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg border-2 border-white px-4 py-2 rounded">সিঁদুর খেলা</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-white border-2 border-puja-red text-puja-red font-bold px-8 py-3 rounded-full hover:bg-puja-red hover:text-white transition-colors shadow-md">
+                    আরও দেখুন <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-puja-maroon text-white pt-16 pb-8 border-t-4 border-puja-gold relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M20 20.5V18H0v-2h20v-2.5L22.5 17 25 14.5V20h-2v-5l-1.5 1.5-1.5-1.5V20z\' fill=\'%23FBC222\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                
+                <!-- About -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="https://raw.githubusercontent.com/dnc0707-design/Kotaldi-Sarbojonin-Durgapuja-2026/main/images.png" alt="Maa Durga Logo" class="w-12 h-12 object-contain drop-shadow-xl">
+                        <h3 class="text-2xl font-heading font-bold text-puja-gold">কোটালডি সর্বজনীন</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">আপনাদের সকলের উপস্থিতি আমাদের উৎসবকে আরও আনন্দময় করে তুলবে। সকলকে শারদীয়া দুর্গাপূজার প্রীতি ও শুভেচ্ছা।</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-puja-gold hover:text-puja-darkred transition-colors">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-puja-gold hover:text-puja-darkred transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-puja-gold hover:text-puja-darkred transition-colors">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 border-b border-white/20 pb-2 inline-block">গুরুত্বপূর্ণ লিংক</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> হোম</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> আমাদের কথা</a></li>
+                        <li><a href="#events" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> সাংস্কৃতিক অনুষ্ঠান</a></li>
+                        <li><a href="#participate" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> অংশগ্রহণ ফর্ম</a></li>
+                        <li><a href="#panjika" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> পূজা নির্ঘণ্ট</a></li>
+                        <li><a href="#committee" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> কমিটি</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> গ্যালারি</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 border-b border-white/20 pb-2 inline-block">যোগাযোগ</h4>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-puja-gold"></i>
+                            <span><strong>স্থান:</strong> মহাপ্রভু ময়দান<br>গ্রাম - কোটালডি</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-puja-gold"></i>
+                            <span>+91 7980230656</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-puja-gold"></i>
+                            <span>dnc0707@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                <p>&copy; 2026 Kotaldi Sarbajonin Durga Puja. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 flex gap-4 items-center">
+                    <span>Designed with ❤️</span>
+                    <button onclick="openLoginModal()" class="text-gray-500 hover:text-puja-gold"><i class="fa-solid fa-lock text-xs"></i> Admin Login</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Login Modal -->
+<div id="login-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl animate-[fadein_0.3s]">
+        <div class="bg-puja-darkred p-6 text-center border-b-4 border-puja-gold">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
+                <i class="fa-solid fa-user-shield text-puja-red text-2xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white font-heading">অ্যাডমিন প্যানেল</h2>
+            <p class="text-puja-gold text-sm mt-1">লগইন করুন</p>
+        </div>
+        
+        <div class="p-8">
+            <div id="login-error" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <span class="block sm:inline text-sm"><i class="fa-solid fa-circle-exclamation mr-1"></i> ভুল ইউজারনেম বা পাসওয়ার্ড!</span>
+            </div>
+            
+            <div class="mb-5">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">ইউজারনেম (Username)</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-user text-gray-400"></i>
+                    </div>
+                    <input class="pl-10 shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-puja-red focus:border-transparent transition-all" id="username" type="text" placeholder="admin">
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">পাসওয়ার্ড (Password)</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-lock text-gray-400"></i>
+                    </div>
+                    <input class="pl-10 shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-puja-red focus:border-transparent transition-all" id="password" type="password" placeholder="admin">
+                </div>
+                <p class="text-xs text-gray-500 italic mt-1">Hint: use <span class="font-bold text-gray-800">admin</span> / <span class="font-bold text-gray-800">admin</span> for demo.</p>
+            </div>
+            
+            <div class="flex items-center justify-between gap-4">
+                <button onclick="closeLoginModal()" class="w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline transition-colors">
+                    বাতিল
+                </button>
+                <button onclick="attemptLogin()" class="w-1/2 bg-puja-red hover:bg-puja-darkred text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline transition-colors shadow-md">
+                    লগইন <i class="fa-solid fa-right-to-bracket ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Admin View (Hidden initially) -->
+<div id="admin-view" class="hidden min-h-screen bg-gray-50 flex-col">
+    <!-- Admin Header -->
+    <header class="bg-puja-darkred text-white shadow-md border-b-4 border-puja-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-puja-gold text-2xl"></i>
+                <h1 class="text-xl font-bold font-heading">কোটালডি অ্যাডমিন ড্যাশবোর্ড</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="switchToPublic()" class="text-sm bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors border border-white/20">
+                    <i class="fa-solid fa-globe mr-2"></i>ওয়েবসাইটে ফিরুন
+                </button>
+                <button onclick="logout()" class="text-sm bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors font-bold shadow">
+                    লগআউট <i class="fa-solid fa-right-from-bracket ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <!-- Marquee Edit -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+            <h2 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2"><i class="fa-solid fa-bullhorn text-puja-orange mr-2"></i>ঘোষণা (Marquee Text) পরিবর্তন</h2>
+            <div class="flex gap-4">
+                <input type="text" id="admin-marquee-input" class="flex-grow border rounded-lg px-4 py-2 focus:ring-2 focus:ring-puja-red focus:outline-none" value="মায়ের আগমনে আনন্দে মাতুক চারিদিক, উৎসবের এই পুণ্যলগ্নে আপনাদের জানাই সাদর আমন্ত্রণ।">
+                <button onclick="saveMarquee()" class="bg-puja-red text-white px-6 py-2 rounded-lg hover:bg-puja-darkred transition-colors shadow">সংরক্ষণ</button>
+            </div>
+        </div>
+
+        <!-- Advertisers Management -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+                <h2 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-ad text-puja-orange mr-2"></i>বিজ্ঞাপন ব্যবস্থাপনা (Advertisers)</h2>
+                <button onclick="openSponsorModal()" class="bg-puja-gold text-puja-darkred px-4 py-2 rounded-lg hover:bg-yellow-500 transition-colors shadow flex items-center text-sm font-bold">
+                    <i class="fa-solid fa-plus mr-2"></i>নতুন বিজ্ঞাপন যোগ
+                </button>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-100 text-gray-600 text-sm uppercase">
+                            <th class="p-4 font-bold border-b w-24">মিডিয়া</th>
+                            <th class="p-4 font-bold border-b">নাম (Name)</th>
+                            <th class="p-4 font-bold border-b">ধরন (Type)</th>
+                            <th class="p-4 font-bold border-b text-right">অ্যাকশন</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-sponsors-body" class="text-gray-800 text-sm">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Panjika Management -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+                <h2 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-calendar-check text-puja-red mr-2"></i>পূজা নির্ঘণ্ট ব্যবস্থাপনা (Schedule)</h2>
+                <button onclick="openEditModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors shadow flex items-center text-sm font-bold">
+                    <i class="fa-solid fa-plus mr-2"></i>নতুন যোগ করুন
+                </button>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-100 text-gray-600 text-sm uppercase">
+                            <th class="p-4 font-bold border-b">তারিখ ও বার</th>
+                            <th class="p-4 font-bold border-b">তিথি / উৎসব</th>
+                            <th class="p-4 font-bold border-b">বিস্তারিত</th>
+                            <th class="p-4 font-bold border-b text-right">অ্যাকশন</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-table-body" class="text-gray-800 text-sm">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Edit/Add Modal (Admin) -->
+<div id="edit-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
+        <div class="bg-gray-100 p-4 border-b flex justify-between items-center">
+            <h3 id="modal-title" class="font-bold text-lg text-gray-800">যোগ/সম্পাদনা করুন</h3>
+            <button onclick="closeEditModal()" class="text-gray-500 hover:text-red-500 transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+        <div class="p-6 space-y-4">
+            <input type="hidden" id="edit-id">
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">তারিখ ও বার</label>
+                <input type="text" id="edit-date" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-red focus:outline-none" placeholder="যেমন: ১৭ অক্টোবর ২০২৬, শনিবার">
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">তিথি / উৎসব</label>
+                <input type="text" id="edit-title" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-red focus:outline-none" placeholder="যেমন: মহাষষ্ঠী">
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">বিস্তারিত বিবরণ</label>
+                <textarea id="edit-desc" rows="3" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-red focus:outline-none" placeholder="পূজার সময়সূচী বা বিবরণ..."></textarea>
+            </div>
+            
+            <div class="pt-4 flex justify-end gap-3">
+                <button onclick="closeEditModal()" class="px-5 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">বাতিল</button>
+                <button onclick="saveEvent()" class="px-5 py-2 bg-puja-red text-white font-bold rounded-lg hover:bg-puja-darkred transition-colors shadow">সংরক্ষণ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sponsor Edit/Add Modal (Admin) -->
+<div id="sponsor-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
+        <div class="bg-gray-100 p-4 border-b flex justify-between items-center">
+            <h3 id="sponsor-modal-title" class="font-bold text-lg text-gray-800">বিজ্ঞাপন যোগ/সম্পাদনা</h3>
+            <button onclick="closeSponsorModal()" class="text-gray-500 hover:text-red-500 transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+        <div class="p-6 space-y-4">
+            <input type="hidden" id="edit-sponsor-id">
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">বিজ্ঞাপনদাতার নাম (Sponsor Name)</label>
+                <input type="text" id="edit-sponsor-name" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-orange focus:outline-none" placeholder="উদা: Kotaldi Jewellers">
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">বিজ্ঞাপনের ধরন</label>
+                    <select id="edit-sponsor-type" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-orange focus:outline-none">
+                        <option value="image">ছবি / ব্যানার (Image)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">লিংক (ঐচ্ছিক)</label>
+                    <input type="url" id="edit-sponsor-link" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-orange focus:outline-none" placeholder="https://...">
+                </div>
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">মিডিয়া URL (Image link)</label>
+                <textarea id="edit-sponsor-media" rows="2" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-orange focus:outline-none" placeholder="ব্যানার ছবির লিংক দিন"></textarea>
+            </div>
+            
+            <div class="pt-4 flex justify-end gap-3">
+                <button onclick="closeSponsorModal()" class="px-5 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">বাতিল</button>
+                <button onclick="saveSponsor()" class="px-5 py-2 bg-puja-orange text-white font-bold rounded-lg hover:bg-orange-600 transition-colors shadow">সংরক্ষণ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast"><i class="fa-solid fa-check-circle text-green-400 mr-2"></i> <span id="toast-msg">সফলভাবে সংরক্ষিত হয়েছে!</span></div>
+
+<script>
+    // --- Data State ---
+    let isLoggedIn = false;
+    
+    // Sponsors Data
+    let sponsorsData = [
+        { id: 1, name: "Premium Sponsor Banner", type: "image", media: "https://placehold.co/600x200/FBC222/7f1d1d?text=Advertise+Here", link: "#" },
+        { id: 2, name: "Local Business", type: "image", media: "https://placehold.co/300x200/E52B00/FFF?text=Your+Brand", link: "#" }
+    ];
+
+    let participantsData = [
+        { name: "Aditi Sharma", type: "solo_dance", date: "17_oct", photo: "https://placehold.co/100x100/F97E04/FFF5E3?text=AS" },
+        { name: "Tathoi Dance Troupe", type: "group_dance", date: "18_oct", photo: "https://placehold.co/100x100/7f1d1d/FFF5E3?text=TDT" }
+    ];
+    
+    // Updated with verified Bisuddha Siddhanta 2026 (1433 Bangabdo) timings
+    let panjikaData = [
+        { id: 1, date: "১০ অক্টোবর ২০২৬, শনিবার (২৮ আশ্বিন)", title: "মহালয়া", desc: "দেবীপক্ষের সূচনা ও প্রাতঃকালে পিতৃ তর্পণ।" },
+        { id: 2, date: "১৬ অক্টোবর ২০২৬, শুক্রবার (৩ কার্তিক)", title: "ষষ্ঠী", desc: "ষষ্ঠীবিহিত পূজা: সকাল ৮:৩০ মিনিটের মধ্যে সমাপনীয়। সায়ংকালীন পর্ব: দেবীর কল্পারম্ভ, বোধন, আমন্ত্রণ ও অধিবাস।" },
+        { id: 3, date: "১৭ অক্টোবর ২০২৬, শনিবার (৪ কার্তিক)", title: "মহা সপ্তমী - ১ম দিন", desc: "নবপত্রিকা প্রবেশ (কোলাবউ স্নান): সূর্যোদয়ের পর সকাল ৫:৩০ মিনিট থেকে। সপ্তমী বিহিত পূজা ও অঞ্জলি: সকাল ৮:০০ টা থেকে শুরু।" },
+        { id: 4, date: "১৮ অক্টোবর ২০২৬, রবিবার (৫ কার্তিক)", title: "মহা সপ্তমী - ২য় দিন", desc: "নিত্য ও সপ্তমী বিহিত পূজা: সকাল ৮:০০ টার পর থেকে সাধারণ পুষ্পাঞ্জলি।" },
+        { id: 5, date: "১৯ অক্টোবর ২০২৬, সোমবার (৬ কার্তিক)", title: "মহা অষ্টমী", desc: "অষ্টমী বিহিত পূজা: খুব ভোরে সকাল ৫:৪৫ মিনিট থেকে শুরু। অষ্টমী পুষ্পাঞ্জলি: সকাল ৮:০০ টা থেকে ৯:০০ টার মধ্যে প্রশস্ত। সন্ধিপূজা: সকাল ৭:১৬ মিনিট (মতান্তরে ৭:২৬) থেকে সকাল ৮:১৪ মিনিট পর্যন্ত।" },
+        { id: 6, date: "২০ অক্টোবর ২০২৬, মঙ্গলবার (৭ কার্তিক)", title: "মহা নবমী", desc: "নবমী বিহিত পূজা: সকাল ৬:০০ টা থেকে শুরু। নবমী হোম ও বলিদান: সকাল ১০:৩০ মিনিট থেকে ১১:০০ টার মধ্যে সমাপ্য।" },
+        { id: 7, date: "২১ অক্টোবর ২০২৬, বুধবার (৮ কার্তিক)", title: "বিজয়া দশমী", desc: "দশমী বিহিত পূজা: সকালের দিকে দেবীর অন্তিম পূজা সমাপন। দর্পণ বিসর্জন।" }
+    ];
+
+    // --- DOM Elements ---
+    const publicView = document.getElementById('public-view');
+    const adminView = document.getElementById('admin-view');
+    const loginModal = document.getElementById('login-modal');
+    const editModal = document.getElementById('edit-modal');
+    const panjikaGrid = document.getElementById('panjika-grid');
+    const adminTableBody = document.getElementById('admin-table-body');
+    const navbar = document.getElementById('navbar');
+    
+    // --- Initialize ---
+    document.addEventListener('DOMContentLoaded', () => {
+        renderPublicSponsors();
+        renderPublicPanjika();
+        renderAdminTable();
+        renderAdminSponsorsTable();
+        renderParticipants();
+        startCountdown();
+        setupScrollObserver();
+    });
+
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if(mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    }
+
+    function setupScrollObserver() {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('glass-nav', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    function startCountdown() {
+        const countDownDate = new Date("Oct 16, 2026 00:00:00").getTime();
+        
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const daysEl = document.getElementById("days");
+            if (!daysEl) {
+                clearInterval(timer);
+                return;
+            }
+
+            if (distance < 0) {
+                clearInterval(timer);
+                daysEl.innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysEl.innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }, 1000);
+    }
+
+    function renderPublicPanjika() {
+        const grid = document.getElementById('panjika-grid');
+        if (!grid) return;
+        
+        grid.innerHTML = panjikaData.map((item, index) => `
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-b-4 ${index % 2 === 0 ? 'border-puja-red' : 'border-puja-gold'} fade-in-up" style="transition-delay: ${(index % 3) * 100}ms">
+                <div class="flex items-center justify-center w-12 h-12 bg-red-50 rounded-full mb-4 text-puja-red border border-red-100">
+                    <i class="fa-solid fa-om text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 font-heading">${item.title}</h3>
+                <p class="text-puja-red font-medium text-sm mb-3">${item.date}</p>
+                <p class="text-gray-600 leading-relaxed text-sm">${item.desc}</p>
+            </div>
+        `).join('');
+    }
+
+    // --- STREAMING_CHUNK:Sponsors Render Logic ---
+    function renderPublicSponsors() {
+        const grid = document.getElementById('sponsors-grid');
+        if (!grid) return;
+        
+        if (sponsorsData.length === 0) {
+            grid.innerHTML = `<p class="text-gray-500 italic text-sm w-full text-center">বিজ্ঞাপনদাতাদের জন্য স্থান উন্মুক্ত। যোগাযোগ করুন!</p>`;
+            return;
+        }
+
+        grid.innerHTML = sponsorsData.map(s => {
+            if (s.type === 'video') {
+                return `
+                <div class="w-full max-w-md rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-white">
+                    <div class="aspect-video w-full bg-black">
+                        <iframe class="w-full h-full" src="${s.media}" title="${s.name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-2 text-center bg-gray-50 border-t border-gray-200">
+                        <h4 class="font-bold text-gray-700 text-sm truncate">${s.name}</h4>
+                    </div>
+                </div>`;
+            } else {
+                return `
+                <a href="${s.link || '#'}" target="_blank" class="block w-40 md:w-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl border border-gray-100 transform hover:-translate-y-2 transition-all bg-white p-2">
+                    <div class="h-24 md:h-32 flex items-center justify-center overflow-hidden rounded bg-gray-50">
+                        <img src="${s.media}" alt="${s.name}" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/300x150/eeeeee/999999?text=Image+Error'">
+                    </div>
+                    <div class="p-2 text-center mt-1 border-t border-gray-50">
+                        <h4 class="font-bold text-gray-700 text-xs truncate">${s.name}</h4>
+                    </div>
+                </a>`;
+            }
+        }).join('');
+    }
+
+    function renderAdminSponsorsTable() {
+        const tbody = document.getElementById('admin-sponsors-body');
+        if (!tbody) return;
+        
+        tbody.innerHTML = sponsorsData.map(item => `
+            <tr class="border-b hover:bg-gray-50 transition-colors">
+                <td class="p-4">
+                    ${item.type === 'image' 
+                        ? `<img src="${item.media}" class="w-16 h-10 object-cover rounded border" onerror="this.src='https://placehold.co/100x50?text=Err'">` 
+                        : `<div class="w-16 h-10 bg-gray-800 rounded flex items-center justify-center"><i class="fa-brands fa-youtube text-red-500"></i></div>`
+                    }
+                </td>
+                <td class="p-4 font-bold text-gray-800">${item.name}</td>
+                <td class="p-4">
+                    <span class="px-2 py-1 bg-gray-200 rounded text-xs uppercase font-bold">${item.type}</span>
+                </td>
+                <td class="p-4 text-right whitespace-nowrap">
+                    <button onclick="openSponsorModal(${item.id})" class="text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-md transition-colors mr-2">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button onclick="deleteSponsor(${item.id})" class="text-red-600 hover:text-red-800 bg-red-50 hover:bg-red-100 px-3 py-1 rounded-md transition-colors">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    // --- STREAMING_CHUNK:Sponsor Management Admin Actions ---
+    const sponsorModal = document.getElementById('sponsor-modal');
+
+    function openSponsorModal(id = null) {
+        if (id) {
+            document.getElementById('sponsor-modal-title').innerText = "বিজ্ঞাপন সম্পাদনা (Edit Sponsor)";
+            const item = sponsorsData.find(i => i.id === id);
+            document.getElementById('edit-sponsor-id').value = item.id;
+            document.getElementById('edit-sponsor-name').value = item.name;
+            document.getElementById('edit-sponsor-type').value = item.type;
+            document.getElementById('edit-sponsor-link').value = item.link || '';
+            document.getElementById('edit-sponsor-media').value = item.media;
+        } else {
+            document.getElementById('sponsor-modal-title').innerText = "নতুন বিজ্ঞাপন (Add Sponsor)";
+            document.getElementById('edit-sponsor-id').value = "";
+            document.getElementById('edit-sponsor-name').value = "";
+            document.getElementById('edit-sponsor-type').value = "image";
+            document.getElementById('edit-sponsor-link').value = "";
+            document.getElementById('edit-sponsor-media').value = "";
+        }
+        sponsorModal.classList.remove('hidden');
+        sponsorModal.classList.add('flex');
+    }
+
+    function closeSponsorModal() {
+        sponsorModal.classList.add('hidden');
+        sponsorModal.classList.remove('flex');
+    }
+
+    function saveSponsor() {
+        const id = document.getElementById('edit-sponsor-id').value;
+        const name = document.getElementById('edit-sponsor-name').value.trim();
+        const type = document.getElementById('edit-sponsor-type').value;
+        const link = document.getElementById('edit-sponsor-link').value.trim();
+        let media = document.getElementById('edit-sponsor-media').value.trim();
+
+        if(!name || !media) {
+            alert('নাম এবং মিডিয়া লিংক আবশ্যক!');
+            return;
+        }
+
+        if (id) {
+            const index = sponsorsData.findIndex(i => i.id == id);
+            sponsorsData[index] = { id: Number(id), name, type, media, link };
+            showToast('বিজ্ঞাপন আপডেট করা হয়েছে!');
+        } else {
+            const newId = sponsorsData.length > 0 ? Math.max(...sponsorsData.map(i => i.id)) + 1 : 1;
+            sponsorsData.push({ id: newId, name, type, media, link });
+            showToast('নতুন বিজ্ঞাপন যোগ করা হয়েছে!');
+        }
+
+        renderAdminSponsorsTable();
+        closeSponsorModal();
+    }
+
+    function deleteSponsor(id) {
+        if(confirm("আপনি কি নিশ্চিত যে এই বিজ্ঞাপনটি মুছে ফেলতে চান?")) {
+            sponsorsData = sponsorsData.filter(i => i.id !== id);
+            renderAdminSponsorsTable();
+            showToast('বিজ্ঞাপন মুছে ফেলা হয়েছে!');
+        }
+    }
+
+    // --- STREAMING_CHUNK:Admin Auth and View Switching Logic ---
+    function openLoginModal() {
+        loginModal.classList.remove('hidden');
+        loginModal.classList.add('flex');
+        document.getElementById('login-error').classList.add('hidden');
+    }
+
+    function closeLoginModal() {
+        loginModal.classList.add('hidden');
+        loginModal.classList.remove('flex');
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+    }
+
+    function attemptLogin() {
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+        const errorEl = document.getElementById('login-error');
+
+        if (user === 'admin' && pass === 'admin') {
+            isLoggedIn = true;
+            closeLoginModal();
+            switchToAdmin();
+            showToast('সফলভাবে লগইন করেছেন!');
+        } else {
+            errorEl.classList.remove('hidden');
+        }
+    }
+
+    function logout() {
+        isLoggedIn = false;
+        switchToPublic();
+        showToast('লগআউট সফল হয়েছে।');
+    }
+
+    function switchToAdmin() {
+        publicView.classList.add('hidden');
+        adminView.classList.remove('hidden');
+        adminView.classList.add('flex');
+        // Fade in
+        setTimeout(() => {
+            adminView.classList.remove('opacity-0');
+            adminView.classList.add('opacity-100');
+        }, 50);
+        window.scrollTo(0,0);
+    }
+
+    function switchToPublic() {
+        adminView.classList.remove('opacity-100');
+        adminView.classList.add('opacity-0');
+        
+        setTimeout(() => {
+            adminView.classList.add('hidden');
+            adminView.classList.remove('flex');
+            
+            publicView.classList.remove('hidden');
+            renderPublicPanjika(); 
+            renderPublicSponsors(); // Update sponsors on public return
+            setupScrollObserver(); 
+            window.scrollTo(0,0);
+        }, 300);
+    }
+
+    // --- STREAMING_CHUNK:Admin CRUD Operations ---
+    function renderAdminTable() {
+        adminTableBody.innerHTML = panjikaData.map(item => `
+            <tr class="border-b hover:bg-gray-50 transition-colors group">
+                <td class="p-4 text-gray-700">${item.date}</td>
+                <td class="p-4 font-bold text-puja-darkred">${item.title}</td>
+                <td class="p-4 text-gray-600 max-w-xs truncate" title="${item.desc}">${item.desc}</td>
+                <td class="p-4 text-right whitespace-nowrap">
+                    <button onclick="openEditModal(${item.id})" class="text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-md transition-colors mr-2">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button onclick="deleteEvent(${item.id})" class="text-red-600 hover:text-red-800 bg-red-50 hover:bg-red-100 px-3 py-1 rounded-md transition-colors">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    function openEditModal(id = null) {
+        const modalTitle = document.getElementById('modal-title');
+        
+        if (id) {
+            modalTitle.innerText = "সম্পাদনা করুন (Edit)";
+            const item = panjikaData.find(i => i.id === id);
+            document.getElementById('edit-id').value = item.id;
+            document.getElementById('edit-date').value = item.date;
+            document.getElementById('edit-title').value = item.title;
+            document.getElementById('edit-desc').value = item.desc;
+        } else {
+            modalTitle.innerText = "নতুন যোগ করুন (Add New)";
+            document.getElementById('edit-id').value = "";
+            document.getElementById('edit-date').value = "";
+            document.getElementById('edit-title').value = "";
+            document.getElementById('edit-desc').value = "";
+        }
+        
+        editModal.classList.remove('hidden');
+        editModal.classList.add('flex');
+    }
+
+    function closeEditModal() {
+        editModal.classList.add('hidden');
+        editModal.classList.remove('flex');
+    }
+
+    function saveEvent() {
+        const id = document.getElementById('edit-id').value;
+        const date = document.getElementById('edit-date').value.trim();
+        const title = document.getElementById('edit-title').value.trim();
+        const desc = document.getElementById('edit-desc').value.trim();
+
+        if(!date || !title) {
+            alert('তারিখ এবং তিথি আবশ্যক!');
+            return;
+        }
+
+        if (id) {
+            // Update
+            const index = panjikaData.findIndex(i => i.id == id);
+            panjikaData[index] = { id: Number(id), date, title, desc };
+            showToast('সফলভাবে আপডেট করা হয়েছে!');
+        } else {
+            // Add
+            const newId = panjikaData.length > 0 ? Math.max(...panjikaData.map(i => i.id)) + 1 : 1;
+            panjikaData.push({ id: newId, date, title, desc });
+            
+            // Sort roughly by date string parsing if needed, but append for now
+            // panjikaData.sort((a,b) => a.id - b.id);
+            
+            showToast('নতুন দিন যোগ করা হয়েছে!');
+        }
+
+        renderAdminTable();
+        closeEditModal();
+    }
+
+    function deleteEvent(id) {
+        if(confirm("আপনি কি নিশ্চিত যে এটি মুছে ফেলতে চান?")) {
+            panjikaData = panjikaData.filter(i => i.id !== id);
+            renderAdminTable();
+            showToast('সফলভাবে মুছে ফেলা হয়েছে!');
+        }
+    }
+
+    function saveMarquee() {
+        const newVal = document.getElementById('admin-marquee-input').value;
+        document.getElementById('marquee-text').innerText = newVal;
+        showToast('ঘোষণা আপডেট করা হয়েছে!');
+    }
+
+    // --- STREAMING_CHUNK:Participation Form Logic ---
+    function toggleFormFields() {
+        const eventType = document.getElementById('event-type').value;
+        const groupContainer = document.getElementById('group-members-container');
+        const themeContainer = document.getElementById('theme-container');
+        const groupInput = document.getElementById('group-members-input');
+
+        // Reset display and requirements
+        groupContainer.classList.add('hidden');
+        groupInput.required = false;
+        themeContainer.classList.add('hidden');
+        // Theme is always optional, so no need to manage required property for it
+
+        // Apply specific conditions
+        if (eventType === 'group_dance') {
+            groupContainer.classList.remove('hidden');
+            groupInput.required = true;
+            themeContainer.classList.remove('hidden'); // Show optional theme for group dance
+        }
+    }
+
+    function submitParticipationForm(event) {
+        event.preventDefault(); // Prevent page reload
+        
+        // Get form values
+        const name = document.getElementById('participant-name').value;
+        const type = document.getElementById('event-type').value;
+        const date = document.getElementById('event-date').value;
+        
+        // Handle photo upload (Create a local preview URL)
+        const fileInput = document.getElementById('file-upload');
+        let photoUrl = 'https://placehold.co/100x100/eeeeee/999999?text=No+Photo'; // Default fallback
+        if (fileInput.files && fileInput.files[0]) {
+            photoUrl = URL.createObjectURL(fileInput.files[0]);
+        }
+        
+        // Add to array and re-render
+        participantsData.push({ name, type, date, photo: photoUrl });
+        renderParticipants();
+        
+        // Show success messages
+        const successMsg = document.getElementById('form-success-message');
+        successMsg.classList.remove('hidden');
+        
+        // Hide inline success message after 6 seconds
+        setTimeout(() => { successMsg.classList.add('hidden'); }, 6000);
+        showToast('আবেদন সফল! আপনার নাম তালিকায় যুক্ত হয়েছে।');
+        
+        // Reset the form
+        event.target.reset();
+        document.getElementById('file-name-display').innerText = 'PNG, JPG, GIF up to 5MB';
+        toggleFormFields(); // Reset conditional fields
+    }
+
+    // --- STREAMING_CHUNK:Render Participants List ---
+    function getEventTypeName(val) {
+        if(val === 'solo_dance') return 'Solo Dance';
+        if(val === 'group_dance') return 'Group Dance';
+        if(val === 'karaoke') return 'Karaoke';
+        return val;
+    }
+
+    function getEventDateName(val) {
+        if(val === '17_oct') return 'October 17, 2026';
+        if(val === '18_oct') return 'October 18, 2026';
+        return val;
+    }
+
+    function renderParticipants() {
+        const tbody = document.getElementById('participants-table-body');
+        if(participantsData.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" class="text-center p-8 text-gray-500 italic">No participants registered yet.</td></tr>';
+            return;
+        }
+        
+        // Reverse maps to show newest submissions at the top
+        tbody.innerHTML = participantsData.map((p, index) => `
+            <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'}">
+                <td class="p-5 text-center">
+                    <img src="${p.photo}" alt="${p.name}" class="w-12 h-12 object-cover rounded-full border-2 border-gray-200 shadow-sm mx-auto" onerror="this.src='https://placehold.co/100x100/eeeeee/999999?text=User'">
+                </td>
+                <td class="p-5 font-bold text-gray-800 text-base">${p.name}</td>
+                <td class="p-5"><span class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-md text-xs font-bold border border-gray-200 shadow-sm">${getEventTypeName(p.type)}</span></td>
+                <td class="p-5 text-gray-600 font-medium"><i class="fa-regular fa-calendar text-puja-red mr-2"></i>${getEventDateName(p.date)}</td>
+            </tr>
+        `).reverse().join(''); 
+    }
+
+    // --- Utility: Toast ---
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        document.getElementById("toast-msg").innerText = message;
+        toast.className = "show";
+        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+    }
+</script>
+</body>
+</html>
