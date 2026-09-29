@@ -134,7 +134,7 @@
 <div id="public-view" class="flex-grow transition-opacity duration-300">
     
     <!-- Navbar -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 glass-nav shadow-lg">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo / Title -->
@@ -155,7 +155,7 @@
                     <a href="#panjika" class="text-white hover:text-puja-gold transition-colors text-sm xl:text-base font-medium">নির্ঘণ্ট</a>
                     <a href="#committee" class="text-white hover:text-puja-gold transition-colors text-sm xl:text-base font-medium">কমিটি</a>
                     <a href="#gallery" class="text-white hover:text-puja-gold transition-colors text-sm xl:text-base font-medium">গ্যালারি</a>
-                    <button onclick="openLoginModal()" class="bg-puja-gold text-puja-darkred px-4 py-2 rounded-full font-bold hover:bg-white transition-colors shadow-md flex items-center gap-2 text-sm">
+                    <button onclick="window.openLoginModal()" class="bg-puja-gold text-puja-darkred px-4 py-2 rounded-full font-bold hover:bg-white transition-colors shadow-md flex items-center gap-2 text-sm">
                         <i class="fa-solid fa-user-shield"></i> অ্যাডমিন
                     </button>
                 </div>
@@ -179,7 +179,7 @@
                 <a href="#panjika" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-puja-maroon">নির্ঘণ্ট (Schedule)</a>
                 <a href="#committee" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-puja-maroon">কমিটি (Committee)</a>
                 <a href="#gallery" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-puja-maroon">গ্যালারি (Gallery)</a>
-                <button onclick="openLoginModal()" class="w-full text-left text-puja-gold block px-3 py-2 rounded-md text-base font-bold hover:bg-puja-maroon mt-2 border-t border-puja-maroon pt-2">
+                <button onclick="window.openLoginModal()" class="w-full text-left text-puja-gold block px-3 py-2 rounded-md text-base font-bold hover:bg-puja-maroon mt-2 border-t border-puja-maroon pt-2">
                     <i class="fa-solid fa-user-shield mr-2"></i> অ্যাডমিন লগইন (Admin)
                 </button>
             </div>
@@ -249,7 +249,7 @@
         </div>
     </section>
 
-    <!-- Sponsors & Advertisers Section (High Visibility) -->
+    <!-- Sponsors & Advertisers Section -->
     <section id="sponsors" class="py-10 bg-puja-cream relative border-b border-gray-200 shadow-sm z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 fade-in-up">
@@ -261,6 +261,7 @@
             <!-- Sponsors Grid -->
             <div id="sponsors-grid" class="flex flex-wrap justify-center items-center gap-6 md:gap-10 fade-in-up">
                 <!-- Javascript will inject sponsor banners and videos here -->
+                <div class="text-center text-gray-500 w-full"><i class="fa-solid fa-spinner fa-spin"></i> লোড হচ্ছে...</div>
             </div>
             
             <div class="text-center mt-8">
@@ -284,7 +285,7 @@
                     </p>
                     
                     <div class="space-y-4">
-                        <!-- 17th Oct: Maha Shashthi -->
+                        <!-- Events List -->
                         <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
                             <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
                                 <i class="fa-solid fa-ribbon text-white text-2xl"></i>
@@ -295,7 +296,6 @@
                             </div>
                         </div>
 
-                        <!-- 18th Oct: Maha Saptami -->
                         <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
                             <div class="w-14 h-14 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
                                 <i class="fa-solid fa-users text-white text-2xl"></i>
@@ -307,7 +307,6 @@
                             </div>
                         </div>
 
-                        <!-- 19th Oct: Maha Ashtami -->
                         <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
                             <div class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
                                 <i class="fa-solid fa-music text-white text-2xl"></i>
@@ -319,7 +318,6 @@
                             </div>
                         </div>
 
-                        <!-- 20th Oct: Maha Navami -->
                         <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
                             <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
                                 <i class="fa-solid fa-guitar text-white text-2xl"></i>
@@ -331,7 +329,6 @@
                             </div>
                         </div>
 
-                        <!-- 21st Oct: Maha Dashami -->
                         <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
                             <div class="w-16 h-16 bg-gradient-to-br from-puja-orange to-puja-red rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
                                 <i class="fa-solid fa-microphone-lines text-white text-2xl"></i>
@@ -360,7 +357,6 @@
 
     <!-- Participate Section -->
     <section id="participate" class="py-20 bg-gray-50 relative overflow-hidden">
-        <!-- Decorative Background Elements -->
         <div class="absolute top-0 right-0 w-64 h-64 bg-puja-gold rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-puja-red rounded-full mix-blend-multiply filter blur-3xl opacity-10 transform -translate-x-1/2 translate-y-1/2"></div>
 
@@ -372,13 +368,12 @@
                 <p class="text-lg text-gray-600">আপনি কি আমাদের পূজার মঞ্চে আপনার প্রতিভা প্রদর্শন করতে চান? নিচের ফর্মটি পূরণ করে আজই নাম নথিভুক্ত করুন।</p>
             </div>
 
-            <form onsubmit="submitParticipationForm(event)" class="bg-white rounded-2xl shadow-xl p-6 md:p-10 border-t-4 border-puja-red max-w-4xl mx-auto fade-in-up">
+            <form onsubmit="window.submitParticipationForm(event)" class="bg-white rounded-2xl shadow-xl p-6 md:p-10 border-t-4 border-puja-red max-w-4xl mx-auto fade-in-up">
                 
-                <!-- Event Type & Date -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="event-type">অংশগ্রহণের ধরন (Event Type) <span class="text-red-500">*</span></label>
-                        <select id="event-type" onchange="toggleFormFields()" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all">
+                        <select id="event-type" onchange="window.toggleFormFields()" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all">
                             <option value="">-- নির্বাচন করুন (Select) --</option>
                             <option value="solo_dance">একক নৃত্য (Solo Dance)</option>
                             <option value="group_dance">দলগত নৃত্য (Group Dance)</option>
@@ -395,7 +390,6 @@
                     </div>
                 </div>
 
-                <!-- Name & Village -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label class="block text-gray-700 text-sm font-bold mb-2">নাম / দলের নাম (Name / Group Name) <span class="text-red-500">*</span></label>
@@ -407,7 +401,6 @@
                     </div>
                 </div>
 
-                <!-- Phone & Age -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label class="block text-gray-700 text-sm font-bold mb-2">ফোন নম্বর (Phone Number) <span class="text-red-500">*</span></label>
@@ -426,33 +419,19 @@
                     </div>
                 </div>
 
-                <!-- Conditional: Group Members -->
                 <div id="group-members-container" class="mb-6 hidden">
                     <label class="block text-gray-700 text-sm font-bold mb-2">দলের সদস্যদের নাম (Participant Names) <span class="text-red-500">*</span></label>
                     <textarea id="group-members-input" rows="3" class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all" placeholder="দলের প্রত্যেক সদস্যের নাম কমা (,) দিয়ে লিখুন"></textarea>
                 </div>
 
-                <!-- Conditional: Theme (Optional for Group Dance) -->
                 <div id="theme-container" class="mb-6 hidden">
                     <label class="block text-gray-700 text-sm font-bold mb-2">থিমের নাম (Theme) <span class="text-gray-400 font-normal ml-1">(ঐচ্ছিক / Optional)</span></label>
                     <input type="text" id="theme-input" class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all" placeholder="দলের পারফরম্যান্সের থিম (যদি থাকে)">
                 </div>
 
-                <!-- Photo Upload Section -->
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2">ছবি আপলোড (Upload Photo) <span class="text-gray-400 font-normal ml-1">(ঐচ্ছিক / Optional)</span></label>
-                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50 hover:bg-gray-100 transition-all cursor-pointer" onclick="document.getElementById('file-upload').click()">
-                        <div class="space-y-1 text-center">
-                            <i class="fa-solid fa-image text-3xl text-gray-400 mb-3"></i>
-                            <div class="flex text-sm text-gray-600 justify-center">
-                                <label for="file-upload" class="relative cursor-pointer rounded-md font-medium text-puja-red hover:text-puja-darkred focus-within:outline-none">
-                                    <span class="bg-white px-3 py-1.5 rounded border border-gray-200 shadow-sm inline-block">ছবি নির্বাচন করুন (Choose a photo)</span>
-                                    <input id="file-upload" name="file-upload" type="file" class="sr-only" accept="image/*" onchange="document.getElementById('file-name-display').innerText = this.files[0]?.name || 'PNG, JPG, GIF up to 5MB'">
-                                </label>
-                            </div>
-                            <p id="file-name-display" class="text-xs text-gray-500 mt-3 font-medium">PNG, JPG, GIF up to 5MB</p>
-                        </div>
-                    </div>
+                <!-- Simple Note for avatar -->
+                <div class="mb-6 bg-blue-50 border border-blue-200 p-4 rounded-xl text-blue-700 text-sm">
+                    <i class="fa-solid fa-info-circle mr-2"></i>আপনার নামের প্রথম অক্ষর দিয়ে একটি স্বয়ংক্রিয় ছবি (Avatar) তৈরি করা হবে।
                 </div>
 
                 <div class="text-center mt-8">
@@ -489,7 +468,7 @@
                             </tr>
                         </thead>
                         <tbody id="participants-table-body" class="text-gray-600 text-sm">
-                            <!-- JS will populate this -->
+                            <tr><td colspan="4" class="text-center p-8 text-gray-500 italic"><i class="fa-solid fa-spinner fa-spin mr-2"></i> লোড হচ্ছে...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -499,7 +478,6 @@
 
     <!-- Panjika Section -->
     <section id="panjika" class="py-20 bg-gray-50 relative">
-        <!-- Decorative border top -->
         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-puja-red via-puja-gold to-puja-red"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -507,12 +485,21 @@
                 <span class="text-puja-red font-bold tracking-widest uppercase mb-2 block"><i class="fa-solid fa-calendar-alt mr-2"></i>সময়সূচী</span>
                 <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-6">পূজা নির্ঘণ্ট ২০২৬</h2>
                 <div class="h-1 w-24 bg-puja-red mx-auto rounded-full mb-6"></div>
-                <p class="text-lg text-gray-600">বিশুদ্ধ সিদ্ধান্ত পঞ্জিকা অনুযায়ী ১৪৩৩ বঙ্গাব্দের শারদীয়া দুর্গাপূজার সময়সূচী।</p>
+                <p class="text-lg text-gray-600 mb-6">বিশুদ্ধ সিদ্ধান্ত পঞ্জিকা অনুযায়ী ১৪৩৩ বঙ্গাব্দের শারদীয়া দুর্গাপূজার সময়সূচী।</p>
+
+                <div class="bg-puja-cream border-l-4 border-r-4 border-puja-gold rounded-xl p-3 shadow-md overflow-hidden max-w-4xl mx-auto mt-6">
+                    <marquee class="text-puja-darkred font-medium text-sm md:text-base font-heading flex items-center" scrollamount="6">
+                        <span class="font-bold text-puja-red"><i class="fa-solid fa-star text-puja-gold mr-1"></i> দেবীর বাহন ও ফলাফল:</span>
+                        দেবীর আগমন: গজে (হাতিতে) 🐘 – ফল: “শস্যপূর্ণা বসুন্ধরা”। পৃথিবীতে সুখ, শান্তি, সমৃদ্ধি ও ভালো ফলন আসবে। 
+                        <span class="mx-6 text-puja-orange"><i class="fa-solid fa-om"></i></span> 
+                        দেবীর গমন: নৌকায় 🛶 – ফল: “জলবৃদ্ধি ও শস্যবৃদ্ধি”। প্রচুর বৃষ্টিপাত ও নদ-নদীর জলবৃদ্ধির সাথে সাথে কৃষিকাজে দারুণ উন্নতি হবে।
+                    </marquee>
+                </div>
             </div>
 
             <!-- This grid will be populated by JavaScript -->
             <div id="panjika-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Data renders here -->
+                <div class="text-center text-gray-500 col-span-full"><i class="fa-solid fa-spinner fa-spin"></i> লোড হচ্ছে...</div>
             </div>
             
             <div class="mt-12 text-center fade-in-up">
@@ -631,41 +618,37 @@
                 <div class="hidden md:block h-1 w-32 bg-puja-gold rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <!-- Gallery Item 1 -->
-                <div class="group relative rounded-xl overflow-hidden shadow-lg h-64 fade-in-up">
-                    <img src="https://placehold.co/600x600/7f1d1d/FFF5E3?text=Idol+Preparation" alt="Idol Preparation" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-white font-bold text-lg border-2 border-white px-4 py-2 rounded">প্রতিমা প্রস্তুতি</span>
-                    </div>
+            <!-- Video Section -->
+            <h3 class="text-2xl font-bold mb-6 text-puja-darkred border-l-4 border-puja-gold pl-3">ভিডিও (Videos)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Gallery Item 1 (Video) -->
+                <div class="rounded-xl overflow-hidden shadow-lg fade-in-up bg-black flex items-center justify-center">
+                    <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/6hYwTx25YNE" title="Kotaldi Puja Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-                <!-- Gallery Item 2 -->
-                <div class="group relative rounded-xl overflow-hidden shadow-lg h-64 sm:col-span-2 fade-in-up" style="transition-delay: 100ms;">
-                    <img src="https://placehold.co/1200x600/F97E04/FFF5E3?text=Pandal+Design" alt="Pandal Design" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-white font-bold text-lg border-2 border-white px-4 py-2 rounded">মণ্ডপ সজ্জা</span>
-                    </div>
+                <!-- Gallery Item 2 (Video) -->
+                <div class="rounded-xl overflow-hidden shadow-lg fade-in-up bg-black flex items-center justify-center" style="transition-delay: 100ms;">
+                    <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/CFBylENzEIQ" title="Kotaldi Puja Video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-                <!-- Gallery Item 3 -->
-                <div class="group relative rounded-xl overflow-hidden shadow-lg h-64 fade-in-up" style="transition-delay: 200ms;">
-                    <img src="https://placehold.co/600x600/FBC222/7f1d1d?text=Sindoor+Khela" alt="Sindoor Khela" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-white font-bold text-lg border-2 border-white px-4 py-2 rounded">সিঁদুর খেলা</span>
-                    </div>
+                <!-- Gallery Item 3 (Video) -->
+                <div class="rounded-xl overflow-hidden shadow-lg fade-in-up bg-black flex items-center justify-center" style="transition-delay: 200ms;">
+                    <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/bHcigXGulhY" title="Kotaldi Puja Video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </div>
-            
-            <div class="text-center mt-12">
-                <button class="bg-white border-2 border-puja-red text-puja-red font-bold px-8 py-3 rounded-full hover:bg-puja-red hover:text-white transition-colors shadow-md">
-                    আরও দেখুন <i class="fa-solid fa-arrow-right ml-2"></i>
-                </button>
+
+            <!-- Photos Section (Dynamic) -->
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-puja-darkred border-l-4 border-puja-gold pl-3">ছবি (Photos)</h3>
+            </div>
+            <div id="photo-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Javascript will inject photos here -->
+                <div class="text-center text-gray-500 w-full col-span-full py-8"><i class="fa-solid fa-spinner fa-spin"></i> লোড হচ্ছে...</div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-puja-maroon text-white pt-16 pb-8 border-t-4 border-puja-gold relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M20 20.5V18H0v-2h20v-2.5L22.5 17 25 14.5V20h-2v-5l-1.5 1.5-1.5-1.5V20z\' fill=\'%23FBC222\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M20 20.5V18H0v-2h20v-2.5L22.5 17 25 14.5V20h-2v-5l-1.5 1.5-1.5-1.5V20z\' fill=\'%23FBC222\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
@@ -695,7 +678,6 @@
                     <h4 class="text-xl font-bold mb-6 border-b border-white/20 pb-2 inline-block">গুরুত্বপূর্ণ লিংক</h4>
                     <ul class="space-y-3">
                         <li><a href="#home" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> হোম</a></li>
-                        <li><a href="#about" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> আমাদের কথা</a></li>
                         <li><a href="#events" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> সাংস্কৃতিক অনুষ্ঠান</a></li>
                         <li><a href="#participate" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> অংশগ্রহণ ফর্ম</a></li>
                         <li><a href="#panjika" class="text-gray-300 hover:text-puja-gold transition-colors flex items-center"><i class="fa-solid fa-angle-right mr-2 text-xs"></i> পূজা নির্ঘণ্ট</a></li>
@@ -728,7 +710,7 @@
                 <p>&copy; 2026 Kotaldi Sarbajonin Durga Puja. All rights reserved.</p>
                 <div class="mt-4 md:mt-0 flex gap-4 items-center">
                     <span>Designed with ❤️</span>
-                    <button onclick="openLoginModal()" class="text-gray-500 hover:text-puja-gold"><i class="fa-solid fa-lock text-xs"></i> Admin Login</button>
+                    <button onclick="window.openLoginModal()" class="text-gray-500 hover:text-puja-gold"><i class="fa-solid fa-lock text-xs"></i> Admin Login</button>
                 </div>
             </div>
         </div>
@@ -773,10 +755,10 @@
             </div>
             
             <div class="flex items-center justify-between gap-4">
-                <button onclick="closeLoginModal()" class="w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline transition-colors">
+                <button onclick="window.closeLoginModal()" class="w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline transition-colors">
                     বাতিল
                 </button>
-                <button onclick="attemptLogin()" class="w-1/2 bg-puja-red hover:bg-puja-darkred text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline transition-colors shadow-md">
+                <button onclick="window.attemptLogin()" class="w-1/2 bg-puja-red hover:bg-puja-darkred text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline transition-colors shadow-md">
                     লগইন <i class="fa-solid fa-right-to-bracket ml-2"></i>
                 </button>
             </div>
@@ -794,10 +776,10 @@
                 <h1 class="text-xl font-bold font-heading">কোটালডি অ্যাডমিন ড্যাশবোর্ড</h1>
             </div>
             <div class="flex items-center gap-4">
-                <button onclick="switchToPublic()" class="text-sm bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors border border-white/20">
+                <button onclick="window.switchToPublic()" class="text-sm bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors border border-white/20">
                     <i class="fa-solid fa-globe mr-2"></i>ওয়েবসাইটে ফিরুন
                 </button>
-                <button onclick="logout()" class="text-sm bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors font-bold shadow">
+                <button onclick="window.logout()" class="text-sm bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors font-bold shadow">
                     লগআউট <i class="fa-solid fa-right-from-bracket ml-1"></i>
                 </button>
             </div>
@@ -811,7 +793,7 @@
             <h2 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2"><i class="fa-solid fa-bullhorn text-puja-orange mr-2"></i>ঘোষণা (Marquee Text) পরিবর্তন</h2>
             <div class="flex gap-4">
                 <input type="text" id="admin-marquee-input" class="flex-grow border rounded-lg px-4 py-2 focus:ring-2 focus:ring-puja-red focus:outline-none" value="মায়ের আগমনে আনন্দে মাতুক চারিদিক, উৎসবের এই পুণ্যলগ্নে আপনাদের জানাই সাদর আমন্ত্রণ।">
-                <button onclick="saveMarquee()" class="bg-puja-red text-white px-6 py-2 rounded-lg hover:bg-puja-darkred transition-colors shadow">সংরক্ষণ</button>
+                <button onclick="window.saveMarquee()" class="bg-puja-red text-white px-6 py-2 rounded-lg hover:bg-puja-darkred transition-colors shadow">সংরক্ষণ</button>
             </div>
         </div>
 
@@ -819,7 +801,7 @@
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
             <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
                 <h2 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-ad text-puja-orange mr-2"></i>বিজ্ঞাপন ব্যবস্থাপনা (Advertisers)</h2>
-                <button onclick="openSponsorModal()" class="bg-puja-gold text-puja-darkred px-4 py-2 rounded-lg hover:bg-yellow-500 transition-colors shadow flex items-center text-sm font-bold">
+                <button onclick="window.openSponsorModal()" class="bg-puja-gold text-puja-darkred px-4 py-2 rounded-lg hover:bg-yellow-500 transition-colors shadow flex items-center text-sm font-bold">
                     <i class="fa-solid fa-plus mr-2"></i>নতুন বিজ্ঞাপন যোগ
                 </button>
             </div>
@@ -845,7 +827,7 @@
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
                 <h2 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-calendar-check text-puja-red mr-2"></i>পূজা নির্ঘণ্ট ব্যবস্থাপনা (Schedule)</h2>
-                <button onclick="openEditModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors shadow flex items-center text-sm font-bold">
+                <button onclick="window.openEditModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors shadow flex items-center text-sm font-bold">
                     <i class="fa-solid fa-plus mr-2"></i>নতুন যোগ করুন
                 </button>
             </div>
@@ -866,6 +848,31 @@
                 </table>
             </div>
         </div>
+
+        <!-- Gallery Management -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mt-8">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+                <h2 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-camera text-puja-orange mr-2"></i>গ্যালারি ব্যবস্থাপনা (Gallery)</h2>
+                <button onclick="window.openGalleryModal()" class="bg-puja-gold text-puja-darkred px-4 py-2 rounded-lg hover:bg-yellow-500 transition-colors shadow flex items-center text-sm font-bold">
+                    <i class="fa-solid fa-plus mr-2"></i>নতুন ছবি যোগ
+                </button>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-100 text-gray-600 text-sm uppercase">
+                            <th class="p-4 font-bold border-b w-24">ছবি</th>
+                            <th class="p-4 font-bold border-b">শিরোনাম (Title)</th>
+                            <th class="p-4 font-bold border-b text-right">অ্যাকশন</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-gallery-body" class="text-gray-800 text-sm">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
 </div>
 
@@ -874,7 +881,7 @@
     <div class="bg-white rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
         <div class="bg-gray-100 p-4 border-b flex justify-between items-center">
             <h3 id="modal-title" class="font-bold text-lg text-gray-800">যোগ/সম্পাদনা করুন</h3>
-            <button onclick="closeEditModal()" class="text-gray-500 hover:text-red-500 transition-colors">
+            <button onclick="window.closeEditModal()" class="text-gray-500 hover:text-red-500 transition-colors">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
         </div>
@@ -897,8 +904,8 @@
             </div>
             
             <div class="pt-4 flex justify-end gap-3">
-                <button onclick="closeEditModal()" class="px-5 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">বাতিল</button>
-                <button onclick="saveEvent()" class="px-5 py-2 bg-puja-red text-white font-bold rounded-lg hover:bg-puja-darkred transition-colors shadow">সংরক্ষণ করুন</button>
+                <button onclick="window.closeEditModal()" class="px-5 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">বাতিল</button>
+                <button onclick="window.saveEvent()" class="px-5 py-2 bg-puja-red text-white font-bold rounded-lg hover:bg-puja-darkred transition-colors shadow">সংরক্ষণ করুন</button>
             </div>
         </div>
     </div>
@@ -909,7 +916,7 @@
     <div class="bg-white rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
         <div class="bg-gray-100 p-4 border-b flex justify-between items-center">
             <h3 id="sponsor-modal-title" class="font-bold text-lg text-gray-800">বিজ্ঞাপন যোগ/সম্পাদনা</h3>
-            <button onclick="closeSponsorModal()" class="text-gray-500 hover:text-red-500 transition-colors">
+            <button onclick="window.closeSponsorModal()" class="text-gray-500 hover:text-red-500 transition-colors">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
         </div>
@@ -940,8 +947,38 @@
             </div>
             
             <div class="pt-4 flex justify-end gap-3">
-                <button onclick="closeSponsorModal()" class="px-5 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">বাতিল</button>
-                <button onclick="saveSponsor()" class="px-5 py-2 bg-puja-orange text-white font-bold rounded-lg hover:bg-orange-600 transition-colors shadow">সংরক্ষণ করুন</button>
+                <button onclick="window.closeSponsorModal()" class="px-5 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">বাতিল</button>
+                <button onclick="window.saveSponsor()" class="px-5 py-2 bg-puja-orange text-white font-bold rounded-lg hover:bg-orange-600 transition-colors shadow">সংরক্ষণ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Gallery Edit/Add Modal (Admin) -->
+<div id="gallery-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
+        <div class="bg-gray-100 p-4 border-b flex justify-between items-center">
+            <h3 id="gallery-modal-title" class="font-bold text-lg text-gray-800">ছবি যোগ/সম্পাদনা</h3>
+            <button onclick="window.closeGalleryModal()" class="text-gray-500 hover:text-red-500 transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+        <div class="p-6 space-y-4">
+            <input type="hidden" id="edit-gallery-id">
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">ছবির শিরোনাম (Title)</label>
+                <input type="text" id="edit-gallery-title" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-orange focus:outline-none" placeholder="উদা: মণ্ডপ সজ্জা">
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">ছবির লিংক (Image URL)</label>
+                <textarea id="edit-gallery-media" rows="2" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-orange focus:outline-none" placeholder="ছবির ডিরেক্ট লিংক দিন"></textarea>
+            </div>
+            
+            <div class="pt-4 flex justify-end gap-3">
+                <button onclick="window.closeGalleryModal()" class="px-5 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">বাতিল</button>
+                <button onclick="window.saveGalleryItem()" class="px-5 py-2 bg-puja-orange text-white font-bold rounded-lg hover:bg-orange-600 transition-colors shadow">সংরক্ষণ করুন</button>
             </div>
         </div>
     </div>
@@ -950,50 +987,142 @@
 <!-- Toast Notification -->
 <div id="toast"><i class="fa-solid fa-check-circle text-green-400 mr-2"></i> <span id="toast-msg">সফলভাবে সংরক্ষিত হয়েছে!</span></div>
 
-<script>
-    // --- Data State ---
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc, deleteDoc, onSnapshot, collection, query, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // Your web app's Firebase configuration (Provided by User)
+    const firebaseConfig = {
+        apiKey: "AIzaSyCWi8sgv55qGCqsB6_7IX_S0WpxSjntE0g",
+        authDomain: "kotaldi-sarbojanin-durgapuja.firebaseapp.com",
+        projectId: "kotaldi-sarbojanin-durgapuja",
+        storageBucket: "kotaldi-sarbojanin-durgapuja.firebasestorage.app",
+        messagingSenderId: "762474427060",
+        appId: "1:762474427060:web:a577cb62804fff559edde1"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    
+    // Set App Identifier for Strict Firestore Paths rule
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'kotaldi-puja-2026';
+
+    // State Variables
     let isLoggedIn = false;
-    
-    // Sponsors Data
-    let sponsorsData = [
-        { id: 1, name: "Premium Sponsor Banner", type: "image", media: "https://placehold.co/600x200/FBC222/7f1d1d?text=Advertise+Here", link: "#" },
-        { id: 2, name: "Local Business", type: "image", media: "https://placehold.co/300x200/E52B00/FFF?text=Your+Brand", link: "#" }
+    let sponsorsData = [];
+    let participantsData = [];
+    let galleryData = [];
+
+    const defaultPanjikaData = [
+        { dbId: 'default-1', date: "১০ অক্টোবর ২০২৬, শনিবার (২৮ আশ্বিন)", title: "মহালয়া", desc: "দেবীপক্ষের সূচনা ও প্রাতঃকালে পিতৃ তর্পণ।", order: 1 },
+        { dbId: 'default-2', date: "১৬ অক্টোবর ২০২৬, শুক্রবার (৩ কার্তিক)", title: "ষষ্ঠী", desc: "ষষ্ঠীবিহিত পূজা: সকাল ৮:৩০ মিনিটের মধ্যে সমাপনীয়। সায়ংকালীন পর্ব: দেবীর কল্পারম্ভ, বোধন, আমন্ত্রণ ও অধিবাস।", order: 2 },
+        { dbId: 'default-3', date: "১৭ অক্টোবর ২০২৬, শনিবার (৪ কার্তিক)", title: "মহা সপ্তমী - ১ম দিন", desc: "নবপত্রিকা প্রবেশ (কোলাবউ স্নান): সূর্যোদয়ের পর সকাল ৫:৩০ মিনিট থেকে। সপ্তমী বিহিত পূজা ও অঞ্জলি: সকাল ৮:০০ টা থেকে শুরু।", order: 3 },
+        { dbId: 'default-4', date: "১৮ অক্টোবর ২০২৬, রবিবার (৫ কার্তিক)", title: "মহা সপ্তমী - ২য় দিন", desc: "নিত্য ও সপ্তমী বিহিত পূজা: সকাল ৮:০০ টার পর থেকে সাধারণ পুষ্পাঞ্জলি।", order: 4 },
+        { dbId: 'default-5', date: "১৯ অক্টোবর ২০২৬, সোমবার (৬ কার্তিক)", title: "মহা অষ্টমী", desc: "অষ্টমী বিহিত পূজা: খুব ভোরে সকাল ৫:৪৫ মিনিট থেকে শুরু। অষ্টমী পুষ্পাঞ্জলি: সকাল ৮:০০ টা থেকে ৯:০০ টার মধ্যে প্রশস্ত। সন্ধিপূজা: সকাল ৭:১৬ মিনিট (মতান্তরে ৭:২৬) থেকে সকাল ৮:১৪ মিনিট পর্যন্ত।", order: 5 },
+        { dbId: 'default-6', date: "২০ অক্টোবর ২০২৬, মঙ্গলবার (৭ কার্তিক)", title: "মহা নবমী", desc: "নবমী বিহিত পূজা: সকাল ৬:০০ টা থেকে শুরু। নবমী হোম ও বলিদান: সকাল ১০:৩০ মিনিট থেকে ১১:০০ টার মধ্যে সমাপ্য।", order: 6 },
+        { dbId: 'default-7', date: "২১ অক্টোবর ২০২৬, বুধবার (৮ কার্তিক)", title: "বিজয়া দশমী", desc: "দশমী বিহিত পূজা: সকালের দিকে দেবীর অন্তিম পূজা সমাপন। দর্পণ বিসর্জন।", order: 7 }
     ];
 
-    let participantsData = [
-        { name: "Aditi Sharma", type: "solo_dance", date: "17_oct", photo: "https://placehold.co/100x100/F97E04/FFF5E3?text=AS" },
-        { name: "Tathoi Dance Troupe", type: "group_dance", date: "18_oct", photo: "https://placehold.co/100x100/7f1d1d/FFF5E3?text=TDT" }
-    ];
-    
-    // Updated with verified Bisuddha Siddhanta 2026 (1433 Bangabdo) timings
-    let panjikaData = [
-        { id: 1, date: "১০ অক্টোবর ২০২৬, শনিবার (২৮ আশ্বিন)", title: "মহালয়া", desc: "দেবীপক্ষের সূচনা ও প্রাতঃকালে পিতৃ তর্পণ।" },
-        { id: 2, date: "১৬ অক্টোবর ২০২৬, শুক্রবার (৩ কার্তিক)", title: "ষষ্ঠী", desc: "ষষ্ঠীবিহিত পূজা: সকাল ৮:৩০ মিনিটের মধ্যে সমাপনীয়। সায়ংকালীন পর্ব: দেবীর কল্পারম্ভ, বোধন, আমন্ত্রণ ও অধিবাস।" },
-        { id: 3, date: "১৭ অক্টোবর ২০২৬, শনিবার (৪ কার্তিক)", title: "মহা সপ্তমী - ১ম দিন", desc: "নবপত্রিকা প্রবেশ (কোলাবউ স্নান): সূর্যোদয়ের পর সকাল ৫:৩০ মিনিট থেকে। সপ্তমী বিহিত পূজা ও অঞ্জলি: সকাল ৮:০০ টা থেকে শুরু।" },
-        { id: 4, date: "১৮ অক্টোবর ২০২৬, রবিবার (৫ কার্তিক)", title: "মহা সপ্তমী - ২য় দিন", desc: "নিত্য ও সপ্তমী বিহিত পূজা: সকাল ৮:০০ টার পর থেকে সাধারণ পুষ্পাঞ্জলি।" },
-        { id: 5, date: "১৯ অক্টোবর ২০২৬, সোমবার (৬ কার্তিক)", title: "মহা অষ্টমী", desc: "অষ্টমী বিহিত পূজা: খুব ভোরে সকাল ৫:৪৫ মিনিট থেকে শুরু। অষ্টমী পুষ্পাঞ্জলি: সকাল ৮:০০ টা থেকে ৯:০০ টার মধ্যে প্রশস্ত। সন্ধিপূজা: সকাল ৭:১৬ মিনিট (মতান্তরে ৭:২৬) থেকে সকাল ৮:১৪ মিনিট পর্যন্ত।" },
-        { id: 6, date: "২০ অক্টোবর ২০২৬, মঙ্গলবার (৭ কার্তিক)", title: "মহা নবমী", desc: "নবমী বিহিত পূজা: সকাল ৬:০০ টা থেকে শুরু। নবমী হোম ও বলিদান: সকাল ১০:৩০ মিনিট থেকে ১১:০০ টার মধ্যে সমাপ্য।" },
-        { id: 7, date: "২১ অক্টোবর ২০২৬, বুধবার (৮ কার্তিক)", title: "বিজয়া দশমী", desc: "দশমী বিহিত পূজা: সকালের দিকে দেবীর অন্তিম পূজা সমাপন। দর্পণ বিসর্জন।" }
-    ];
+    let panjikaData = [...defaultPanjikaData]; // Pre-load default data so it displays immediately
 
-    // --- DOM Elements ---
+    // Authenticate Annonymously (Mandatory Rule) before reading Firestore
+    async function initializeAppAuth() {
+        try {
+            await signInAnonymously(auth);
+            setupFirestoreListeners();
+        } catch (error) {
+            console.error("Firebase Authentication Failed: ", error);
+        }
+    }
+
+    function setupFirestoreListeners() {
+        // 1. Listen to Settings / Marquee
+        const marqueeRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'marquee');
+        onSnapshot(marqueeRef, (docSnap) => {
+            if (docSnap.exists()) {
+                const text = docSnap.data().text;
+                document.getElementById('marquee-text').innerText = text;
+                document.getElementById('admin-marquee-input').value = text;
+            }
+        }, (error) => console.error(error));
+
+        // 2. Listen to Panjika Collection
+        const panjikaRef = collection(db, 'artifacts', appId, 'public', 'data', 'panjika');
+        onSnapshot(panjikaRef, (snapshot) => {
+            if (snapshot.empty) {
+                panjikaData = [...defaultPanjikaData];
+            } else {
+                panjikaData = [];
+                snapshot.forEach((doc) => {
+                    panjikaData.push({ dbId: doc.id, ...doc.data() });
+                });
+                // Sort in memory (Avoid complex queries)
+                panjikaData.sort((a, b) => a.order - b.order);
+            }
+            window.renderPublicPanjika();
+            window.renderAdminTable();
+        }, (error) => console.error(error));
+
+        // 3. Listen to Sponsors Collection
+        const sponsorsRef = collection(db, 'artifacts', appId, 'public', 'data', 'sponsors');
+        onSnapshot(sponsorsRef, (snapshot) => {
+            sponsorsData = [];
+            snapshot.forEach((doc) => {
+                sponsorsData.push({ dbId: doc.id, ...doc.data() });
+            });
+            sponsorsData.sort((a, b) => a.order - b.order);
+            window.renderPublicSponsors();
+            window.renderAdminSponsorsTable();
+        }, (error) => console.error(error));
+
+        // 4. Listen to Participants Collection
+        const participantsRef = collection(db, 'artifacts', appId, 'public', 'data', 'participants');
+        onSnapshot(participantsRef, (snapshot) => {
+            participantsData = [];
+            snapshot.forEach((doc) => {
+                participantsData.push({ dbId: doc.id, ...doc.data() });
+            });
+            // Sort by timestamp if exists
+            participantsData.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+            window.renderParticipants();
+        }, (error) => console.error(error));
+
+        // 5. Listen to Gallery Collection
+        const galleryRef = collection(db, 'artifacts', appId, 'public', 'data', 'gallery');
+        onSnapshot(galleryRef, (snapshot) => {
+            galleryData = [];
+            snapshot.forEach((doc) => {
+                galleryData.push({ dbId: doc.id, ...doc.data() });
+            });
+            // Sort to show newest first
+            galleryData.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+            window.renderPublicGallery();
+            window.renderAdminGalleryTable();
+        }, (error) => console.error(error));
+    }
+
+    // DOM Elements Setup & Observers
     const publicView = document.getElementById('public-view');
     const adminView = document.getElementById('admin-view');
     const loginModal = document.getElementById('login-modal');
     const editModal = document.getElementById('edit-modal');
-    const panjikaGrid = document.getElementById('panjika-grid');
-    const adminTableBody = document.getElementById('admin-table-body');
+    const sponsorModal = document.getElementById('sponsor-modal');
     const navbar = document.getElementById('navbar');
-    
-    // --- Initialize ---
+
     document.addEventListener('DOMContentLoaded', () => {
-        renderPublicSponsors();
-        renderPublicPanjika();
-        renderAdminTable();
-        renderAdminSponsorsTable();
-        renderParticipants();
-        startCountdown();
+        window.startCountdown();
         setupScrollObserver();
+        // Initial render so content shows immediately before database loads
+        window.renderPublicPanjika();
+        window.renderAdminTable();
+        window.renderPublicSponsors();
+        window.renderParticipants();
+        window.renderPublicGallery();
+        window.renderAdminGalleryTable();
+        initializeAppAuth(); // Trigger firebase Auth and Listeners
     });
 
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -1034,7 +1163,496 @@
         });
     }
 
-    function startCountdown() {
+    // EXPOSING FUNCTIONS TO WINDOW FOR INLINE HTML CALLS
+    
+    window.renderPublicPanjika = function() {
+        const grid = document.getElementById('panjika-grid');
+        if (!grid) return;
+        
+        if (panjikaData.length === 0) {
+            grid.innerHTML = `<p class="text-gray-500 italic text-sm w-full text-center col-span-full">কোনো সূচী উপলব্ধ নেই।</p>`;
+            return;
+        }
+
+        grid.innerHTML = panjikaData.map((item, index) => `
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-b-4 ${index % 2 === 0 ? 'border-puja-red' : 'border-puja-gold'}">
+                <div class="flex items-center justify-center w-12 h-12 bg-red-50 rounded-full mb-4 text-puja-red border border-red-100">
+                    <i class="fa-solid fa-om text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 font-heading">${item.title}</h3>
+                <p class="text-puja-red font-medium text-sm mb-3">${item.date}</p>
+                <p class="text-gray-600 leading-relaxed text-sm">${item.desc}</p>
+            </div>
+        `).join('');
+    }
+
+    window.renderPublicSponsors = function() {
+        const grid = document.getElementById('sponsors-grid');
+        if (!grid) return;
+        
+        if (sponsorsData.length === 0) {
+            grid.innerHTML = `<p class="text-gray-500 italic text-sm w-full text-center">বিজ্ঞাপনদাতাদের জন্য স্থান উন্মুক্ত। যোগাযোগ করুন!</p>`;
+            return;
+        }
+
+        grid.innerHTML = sponsorsData.map(s => `
+            <a href="${s.link || '#'}" target="_blank" class="block w-40 md:w-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl border border-gray-100 transform hover:-translate-y-2 transition-all bg-white p-2">
+                <div class="h-24 md:h-32 flex items-center justify-center overflow-hidden rounded bg-gray-50">
+                    <img src="${s.media}" alt="${s.name}" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/300x150/eeeeee/999999?text=Image+Error'">
+                </div>
+                <div class="p-2 text-center mt-1 border-t border-gray-50">
+                    <h4 class="font-bold text-gray-700 text-xs truncate">${s.name}</h4>
+                </div>
+            </a>
+        `).join('');
+    }
+
+    window.renderAdminSponsorsTable = function() {
+        const tbody = document.getElementById('admin-sponsors-body');
+        if (!tbody) return;
+        
+        tbody.innerHTML = sponsorsData.map(item => `
+            <tr class="border-b hover:bg-gray-50 transition-colors">
+                <td class="p-4">
+                    <img src="${item.media}" class="w-16 h-10 object-cover rounded border" onerror="this.src='https://placehold.co/100x50?text=Err'">
+                </td>
+                <td class="p-4 font-bold text-gray-800">${item.name}</td>
+                <td class="p-4">
+                    <span class="px-2 py-1 bg-gray-200 rounded text-xs uppercase font-bold">${item.type}</span>
+                </td>
+                <td class="p-4 text-right whitespace-nowrap">
+                    <button onclick="window.openSponsorModal('${item.dbId}')" class="text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-md transition-colors mr-2">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button onclick="window.deleteSponsor('${item.dbId}')" class="text-red-600 hover:text-red-800 bg-red-50 hover:bg-red-100 px-3 py-1 rounded-md transition-colors">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    window.renderAdminTable = function() {
+        const tbody = document.getElementById('admin-table-body');
+        if(!tbody) return;
+        tbody.innerHTML = panjikaData.map(item => `
+            <tr class="border-b hover:bg-gray-50 transition-colors group">
+                <td class="p-4 text-gray-700">${item.date}</td>
+                <td class="p-4 font-bold text-puja-darkred">${item.title}</td>
+                <td class="p-4 text-gray-600 max-w-xs truncate" title="${item.desc}">${item.desc}</td>
+                <td class="p-4 text-right whitespace-nowrap">
+                    <button onclick="window.openEditModal('${item.dbId}')" class="text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-md transition-colors mr-2">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button onclick="window.deleteEvent('${item.dbId}')" class="text-red-600 hover:text-red-800 bg-red-50 hover:bg-red-100 px-3 py-1 rounded-md transition-colors">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    window.renderParticipants = function() {
+        const tbody = document.getElementById('participants-table-body');
+        if(participantsData.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" class="text-center p-8 text-gray-500 italic">No participants registered yet.</td></tr>';
+            return;
+        }
+        
+        tbody.innerHTML = participantsData.map((p, index) => `
+            <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'}">
+                <td class="p-5 text-center">
+                    <img src="${p.photo}" alt="${p.name}" class="w-12 h-12 object-cover rounded-full border-2 border-gray-200 shadow-sm mx-auto" onerror="this.src='https://placehold.co/100x100/eeeeee/999999?text=User'">
+                </td>
+                <td class="p-5 font-bold text-gray-800 text-base">${p.name}</td>
+                <td class="p-5"><span class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-md text-xs font-bold border border-gray-200 shadow-sm">${getEventTypeName(p.type)}</span></td>
+                <td class="p-5 text-gray-600 font-medium"><i class="fa-regular fa-calendar text-puja-red mr-2"></i>${getEventDateName(p.date)}</td>
+            </tr>
+        `).join(''); 
+    }
+
+    window.renderPublicGallery = function() {
+        const grid = document.getElementById('photo-gallery-grid');
+        if (!grid) return;
+        
+        if (galleryData.length === 0) {
+            grid.innerHTML = `<p class="text-gray-500 italic text-sm w-full text-center col-span-full py-8">এখনও কোনো ছবি যোগ করা হয়নি।</p>`;
+            return;
+        }
+
+        grid.innerHTML = galleryData.map((item, index) => `
+            <div class="group relative rounded-xl overflow-hidden shadow-lg h-64 fade-in-up visible" style="transition-delay: ${(index % 4) * 100}ms">
+                <img src="${item.media}" alt="${item.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x600/eeeeee/999999?text=Image+Error'">
+                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
+                    <span class="text-white font-bold text-lg border-2 border-white px-4 py-2 rounded">${item.title}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    window.renderAdminGalleryTable = function() {
+        const tbody = document.getElementById('admin-gallery-body');
+        if (!tbody) return;
+        
+        tbody.innerHTML = galleryData.map(item => `
+            <tr class="border-b hover:bg-gray-50 transition-colors">
+                <td class="p-4">
+                    <img src="${item.media}" class="w-16 h-16 object-cover rounded border" onerror="this.src='https://placehold.co/100x100?text=Err'">
+                </td>
+                <td class="p-4 font-bold text-gray-800">${item.title}</td>
+                <td class="p-4 text-right whitespace-nowrap">
+                    <button onclick="window.openGalleryModal('${item.dbId}')" class="text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-md transition-colors mr-2">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button onclick="window.deleteGalleryItem('${item.dbId}')" class="text-red-600 hover:text-red-800 bg-red-50 hover:bg-red-100 px-3 py-1 rounded-md transition-colors">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    window.openGalleryModal = function(dbId = null) {
+        const modal = document.getElementById('gallery-modal');
+        if (dbId) {
+            document.getElementById('gallery-modal-title').innerText = "ছবি সম্পাদনা (Edit Photo)";
+            const item = galleryData.find(i => i.dbId === dbId);
+            document.getElementById('edit-gallery-id').value = item.dbId;
+            document.getElementById('edit-gallery-title').value = item.title;
+            document.getElementById('edit-gallery-media').value = item.media;
+        } else {
+            document.getElementById('gallery-modal-title').innerText = "নতুন ছবি (Add Photo)";
+            document.getElementById('edit-gallery-id').value = "";
+            document.getElementById('edit-gallery-title').value = "";
+            document.getElementById('edit-gallery-media').value = "";
+        }
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    window.closeGalleryModal = function() {
+        const modal = document.getElementById('gallery-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+    window.saveGalleryItem = async function() {
+        if (!auth.currentUser) return;
+        const dbId = document.getElementById('edit-gallery-id').value;
+        const title = document.getElementById('edit-gallery-title').value.trim();
+        const media = document.getElementById('edit-gallery-media').value.trim();
+
+        if(!title || !media) {
+            showToast('শিরোনাম এবং ছবির লিংক আবশ্যক!');
+            return;
+        }
+
+        const data = { title, media, timestamp: Date.now() };
+
+        try {
+            if (dbId) {
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'gallery', dbId), data, { merge: true });
+                showToast('ছবি আপডেট করা হয়েছে!');
+            } else {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'gallery'), data);
+                showToast('নতুন ছবি যোগ করা হয়েছে!');
+            }
+            window.closeGalleryModal();
+        } catch (e) {
+            console.error(e);
+            showToast('Error saving photo!');
+        }
+    }
+
+    window.deleteGalleryItem = async function(dbId) {
+        if (!auth.currentUser) return;
+        try {
+            await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'gallery', dbId));
+            showToast('ছবি মুছে ফেলা হয়েছে!');
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+    window.openSponsorModal = function(dbId = null) {
+        if (dbId) {
+            document.getElementById('sponsor-modal-title').innerText = "বিজ্ঞাপন সম্পাদনা (Edit Sponsor)";
+            const item = sponsorsData.find(i => i.dbId === dbId);
+            document.getElementById('edit-sponsor-id').value = item.dbId;
+            document.getElementById('edit-sponsor-name').value = item.name;
+            document.getElementById('edit-sponsor-type').value = item.type || 'image';
+            document.getElementById('edit-sponsor-link').value = item.link || '';
+            document.getElementById('edit-sponsor-media').value = item.media;
+        } else {
+            document.getElementById('sponsor-modal-title').innerText = "নতুন বিজ্ঞাপন (Add Sponsor)";
+            document.getElementById('edit-sponsor-id').value = "";
+            document.getElementById('edit-sponsor-name').value = "";
+            document.getElementById('edit-sponsor-type').value = "image";
+            document.getElementById('edit-sponsor-link').value = "";
+            document.getElementById('edit-sponsor-media').value = "";
+        }
+        sponsorModal.classList.remove('hidden');
+        sponsorModal.classList.add('flex');
+    }
+
+    window.closeSponsorModal = function() {
+        sponsorModal.classList.add('hidden');
+        sponsorModal.classList.remove('flex');
+    }
+
+    window.saveSponsor = async function() {
+        if (!auth.currentUser) return; // Guard
+        const dbId = document.getElementById('edit-sponsor-id').value;
+        const name = document.getElementById('edit-sponsor-name').value.trim();
+        const type = document.getElementById('edit-sponsor-type').value;
+        const link = document.getElementById('edit-sponsor-link').value.trim();
+        let media = document.getElementById('edit-sponsor-media').value.trim();
+
+        if(!name || !media) {
+            showToast('নাম এবং মিডিয়া লিংক আবশ্যক!');
+            return;
+        }
+
+        const data = { name, type, media, link, order: Date.now() };
+
+        try {
+            if (dbId) {
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sponsors', dbId), data, { merge: true });
+                showToast('বিজ্ঞাপন আপডেট করা হয়েছে!');
+            } else {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'sponsors'), data);
+                showToast('নতুন বিজ্ঞাপন যোগ করা হয়েছে!');
+            }
+            window.closeSponsorModal();
+        } catch (e) {
+            console.error(e);
+            showToast('Error saving data!');
+        }
+    }
+
+    window.deleteSponsor = async function(dbId) {
+        if (!auth.currentUser) return;
+        // Replaced confirm() with modern approach per instructions, auto-deleting for speed in this Immersive env.
+        try {
+            await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sponsors', dbId));
+            showToast('বিজ্ঞাপন মুছে ফেলা হয়েছে!');
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+    window.openEditModal = function(dbId = null) {
+        const modalTitle = document.getElementById('modal-title');
+        
+        if (dbId) {
+            modalTitle.innerText = "সম্পাদনা করুন (Edit)";
+            const item = panjikaData.find(i => i.dbId === dbId);
+            document.getElementById('edit-id').value = item.dbId;
+            document.getElementById('edit-date').value = item.date;
+            document.getElementById('edit-title').value = item.title;
+            document.getElementById('edit-desc').value = item.desc;
+        } else {
+            modalTitle.innerText = "নতুন যোগ করুন (Add New)";
+            document.getElementById('edit-id').value = "";
+            document.getElementById('edit-date').value = "";
+            document.getElementById('edit-title').value = "";
+            document.getElementById('edit-desc').value = "";
+        }
+        
+        editModal.classList.remove('hidden');
+        editModal.classList.add('flex');
+    }
+
+    window.closeEditModal = function() {
+        editModal.classList.add('hidden');
+        editModal.classList.remove('flex');
+    }
+
+    window.saveEvent = async function() {
+        if (!auth.currentUser) return;
+        const dbId = document.getElementById('edit-id').value;
+        const date = document.getElementById('edit-date').value.trim();
+        const title = document.getElementById('edit-title').value.trim();
+        const desc = document.getElementById('edit-desc').value.trim();
+
+        if(!date || !title) {
+            showToast('তারিখ এবং তিথি আবশ্যক!');
+            return;
+        }
+
+        const data = { date, title, desc, order: Date.now() };
+        try {
+            if (dbId && !dbId.startsWith('default-')) {
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'panjika', dbId), data, { merge: true });
+                showToast('সফলভাবে আপডেট করা হয়েছে!');
+            } else {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'panjika'), data);
+                showToast('নতুন দিন যোগ করা হয়েছে!');
+            }
+            window.closeEditModal();
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+    window.deleteEvent = async function(dbId) {
+        if (!auth.currentUser) return;
+        if (dbId.startsWith('default-')) {
+            showToast('ডিফল্ট ডেটা মুছে ফেলা সম্ভব নয়। নতুন ইভেন্ট যোগ করুন।');
+            return;
+        }
+        try {
+            await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'panjika', dbId));
+            showToast('সফলভাবে মুছে ফেলা হয়েছে!');
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+    window.saveMarquee = async function() {
+        if (!auth.currentUser) return;
+        const text = document.getElementById('admin-marquee-input').value;
+        try {
+            await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'marquee'), { text });
+            showToast('ঘোষণা আপডেট করা হয়েছে!');
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+    window.submitParticipationForm = async function(event) {
+        event.preventDefault();
+        if (!auth.currentUser) return;
+        
+        const name = document.getElementById('participant-name').value;
+        const type = document.getElementById('event-type').value;
+        const date = document.getElementById('event-date').value;
+        
+        // Use an avatar API generating from initials instead of storing actual file in Firestore to keep payloads small
+        const initText = name.substring(0, 2).toUpperCase();
+        let photoUrl = `https://placehold.co/100x100/eeeeee/999999?text=${initText}`; 
+        
+        const payload = {
+            name,
+            type,
+            date,
+            photo: photoUrl,
+            timestamp: Date.now()
+        };
+
+        try {
+            await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'participants'), payload);
+            
+            const successMsg = document.getElementById('form-success-message');
+            successMsg.classList.remove('hidden');
+            setTimeout(() => { successMsg.classList.add('hidden'); }, 6000);
+            
+            window.showToast('আবেদন সফল! আপনার নাম তালিকায় যুক্ত হয়েছে।');
+            event.target.reset();
+            window.toggleFormFields();
+        } catch(e) {
+            console.error(e);
+            window.showToast('কোথাও সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+        }
+    }
+
+    window.openLoginModal = function() {
+        loginModal.classList.remove('hidden');
+        loginModal.classList.add('flex');
+        document.getElementById('login-error').classList.add('hidden');
+    }
+
+    window.closeLoginModal = function() {
+        loginModal.classList.add('hidden');
+        loginModal.classList.remove('flex');
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+    }
+
+    window.attemptLogin = function() {
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+        const errorEl = document.getElementById('login-error');
+
+        // Note: Simple mock auth to reveal admin panel 
+        if (user === 'admin' && pass === 'admin') {
+            isLoggedIn = true;
+            window.closeLoginModal();
+            window.switchToAdmin();
+            window.showToast('সফলভাবে লগইন করেছেন!');
+        } else {
+            errorEl.classList.remove('hidden');
+        }
+    }
+
+    window.logout = function() {
+        isLoggedIn = false;
+        window.switchToPublic();
+        window.showToast('লগআউট সফল হয়েছে।');
+    }
+
+    window.switchToAdmin = function() {
+        publicView.classList.add('hidden');
+        adminView.classList.remove('hidden');
+        adminView.classList.add('flex');
+        setTimeout(() => {
+            adminView.classList.remove('opacity-0');
+            adminView.classList.add('opacity-100');
+        }, 50);
+        window.scrollTo(0,0);
+    }
+
+    window.switchToPublic = function() {
+        adminView.classList.remove('opacity-100');
+        adminView.classList.add('opacity-0');
+        
+        setTimeout(() => {
+            adminView.classList.add('hidden');
+            adminView.classList.remove('flex');
+            
+            publicView.classList.remove('hidden');
+            window.scrollTo(0,0);
+        }, 300);
+    }
+
+    window.toggleFormFields = function() {
+        const eventType = document.getElementById('event-type').value;
+        const groupContainer = document.getElementById('group-members-container');
+        const themeContainer = document.getElementById('theme-container');
+        const groupInput = document.getElementById('group-members-input');
+
+        groupContainer.classList.add('hidden');
+        groupInput.required = false;
+        themeContainer.classList.add('hidden');
+
+        if (eventType === 'group_dance') {
+            groupContainer.classList.remove('hidden');
+            groupInput.required = true;
+            themeContainer.classList.remove('hidden'); 
+        }
+    }
+
+    function getEventTypeName(val) {
+        if(val === 'solo_dance') return 'Solo Dance';
+        if(val === 'group_dance') return 'Group Dance';
+        if(val === 'karaoke') return 'Karaoke';
+        return val;
+    }
+
+    function getEventDateName(val) {
+        if(val === '17_oct') return 'October 17, 2026';
+        if(val === '18_oct') return 'October 18, 2026';
+        return val;
+    }
+
+    window.showToast = function(message) {
+        const toast = document.getElementById("toast");
+        document.getElementById("toast-msg").innerText = message;
+        toast.className = "show";
+        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+    }
+
+    window.startCountdown = function() {
         const countDownDate = new Date("Oct 16, 2026 00:00:00").getTime();
         
         const timer = setInterval(function() {
@@ -1068,397 +1686,6 @@
         }, 1000);
     }
 
-    function renderPublicPanjika() {
-        const grid = document.getElementById('panjika-grid');
-        if (!grid) return;
-        
-        grid.innerHTML = panjikaData.map((item, index) => `
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-b-4 ${index % 2 === 0 ? 'border-puja-red' : 'border-puja-gold'} fade-in-up" style="transition-delay: ${(index % 3) * 100}ms">
-                <div class="flex items-center justify-center w-12 h-12 bg-red-50 rounded-full mb-4 text-puja-red border border-red-100">
-                    <i class="fa-solid fa-om text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2 font-heading">${item.title}</h3>
-                <p class="text-puja-red font-medium text-sm mb-3">${item.date}</p>
-                <p class="text-gray-600 leading-relaxed text-sm">${item.desc}</p>
-            </div>
-        `).join('');
-    }
-
-    // --- STREAMING_CHUNK:Sponsors Render Logic ---
-    function renderPublicSponsors() {
-        const grid = document.getElementById('sponsors-grid');
-        if (!grid) return;
-        
-        if (sponsorsData.length === 0) {
-            grid.innerHTML = `<p class="text-gray-500 italic text-sm w-full text-center">বিজ্ঞাপনদাতাদের জন্য স্থান উন্মুক্ত। যোগাযোগ করুন!</p>`;
-            return;
-        }
-
-        grid.innerHTML = sponsorsData.map(s => {
-            if (s.type === 'video') {
-                return `
-                <div class="w-full max-w-md rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-white">
-                    <div class="aspect-video w-full bg-black">
-                        <iframe class="w-full h-full" src="${s.media}" title="${s.name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-2 text-center bg-gray-50 border-t border-gray-200">
-                        <h4 class="font-bold text-gray-700 text-sm truncate">${s.name}</h4>
-                    </div>
-                </div>`;
-            } else {
-                return `
-                <a href="${s.link || '#'}" target="_blank" class="block w-40 md:w-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl border border-gray-100 transform hover:-translate-y-2 transition-all bg-white p-2">
-                    <div class="h-24 md:h-32 flex items-center justify-center overflow-hidden rounded bg-gray-50">
-                        <img src="${s.media}" alt="${s.name}" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/300x150/eeeeee/999999?text=Image+Error'">
-                    </div>
-                    <div class="p-2 text-center mt-1 border-t border-gray-50">
-                        <h4 class="font-bold text-gray-700 text-xs truncate">${s.name}</h4>
-                    </div>
-                </a>`;
-            }
-        }).join('');
-    }
-
-    function renderAdminSponsorsTable() {
-        const tbody = document.getElementById('admin-sponsors-body');
-        if (!tbody) return;
-        
-        tbody.innerHTML = sponsorsData.map(item => `
-            <tr class="border-b hover:bg-gray-50 transition-colors">
-                <td class="p-4">
-                    ${item.type === 'image' 
-                        ? `<img src="${item.media}" class="w-16 h-10 object-cover rounded border" onerror="this.src='https://placehold.co/100x50?text=Err'">` 
-                        : `<div class="w-16 h-10 bg-gray-800 rounded flex items-center justify-center"><i class="fa-brands fa-youtube text-red-500"></i></div>`
-                    }
-                </td>
-                <td class="p-4 font-bold text-gray-800">${item.name}</td>
-                <td class="p-4">
-                    <span class="px-2 py-1 bg-gray-200 rounded text-xs uppercase font-bold">${item.type}</span>
-                </td>
-                <td class="p-4 text-right whitespace-nowrap">
-                    <button onclick="openSponsorModal(${item.id})" class="text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-md transition-colors mr-2">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    <button onclick="deleteSponsor(${item.id})" class="text-red-600 hover:text-red-800 bg-red-50 hover:bg-red-100 px-3 py-1 rounded-md transition-colors">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </td>
-            </tr>
-        `).join('');
-    }
-
-    // --- STREAMING_CHUNK:Sponsor Management Admin Actions ---
-    const sponsorModal = document.getElementById('sponsor-modal');
-
-    function openSponsorModal(id = null) {
-        if (id) {
-            document.getElementById('sponsor-modal-title').innerText = "বিজ্ঞাপন সম্পাদনা (Edit Sponsor)";
-            const item = sponsorsData.find(i => i.id === id);
-            document.getElementById('edit-sponsor-id').value = item.id;
-            document.getElementById('edit-sponsor-name').value = item.name;
-            document.getElementById('edit-sponsor-type').value = item.type;
-            document.getElementById('edit-sponsor-link').value = item.link || '';
-            document.getElementById('edit-sponsor-media').value = item.media;
-        } else {
-            document.getElementById('sponsor-modal-title').innerText = "নতুন বিজ্ঞাপন (Add Sponsor)";
-            document.getElementById('edit-sponsor-id').value = "";
-            document.getElementById('edit-sponsor-name').value = "";
-            document.getElementById('edit-sponsor-type').value = "image";
-            document.getElementById('edit-sponsor-link').value = "";
-            document.getElementById('edit-sponsor-media').value = "";
-        }
-        sponsorModal.classList.remove('hidden');
-        sponsorModal.classList.add('flex');
-    }
-
-    function closeSponsorModal() {
-        sponsorModal.classList.add('hidden');
-        sponsorModal.classList.remove('flex');
-    }
-
-    function saveSponsor() {
-        const id = document.getElementById('edit-sponsor-id').value;
-        const name = document.getElementById('edit-sponsor-name').value.trim();
-        const type = document.getElementById('edit-sponsor-type').value;
-        const link = document.getElementById('edit-sponsor-link').value.trim();
-        let media = document.getElementById('edit-sponsor-media').value.trim();
-
-        if(!name || !media) {
-            alert('নাম এবং মিডিয়া লিংক আবশ্যক!');
-            return;
-        }
-
-        if (id) {
-            const index = sponsorsData.findIndex(i => i.id == id);
-            sponsorsData[index] = { id: Number(id), name, type, media, link };
-            showToast('বিজ্ঞাপন আপডেট করা হয়েছে!');
-        } else {
-            const newId = sponsorsData.length > 0 ? Math.max(...sponsorsData.map(i => i.id)) + 1 : 1;
-            sponsorsData.push({ id: newId, name, type, media, link });
-            showToast('নতুন বিজ্ঞাপন যোগ করা হয়েছে!');
-        }
-
-        renderAdminSponsorsTable();
-        closeSponsorModal();
-    }
-
-    function deleteSponsor(id) {
-        if(confirm("আপনি কি নিশ্চিত যে এই বিজ্ঞাপনটি মুছে ফেলতে চান?")) {
-            sponsorsData = sponsorsData.filter(i => i.id !== id);
-            renderAdminSponsorsTable();
-            showToast('বিজ্ঞাপন মুছে ফেলা হয়েছে!');
-        }
-    }
-
-    // --- STREAMING_CHUNK:Admin Auth and View Switching Logic ---
-    function openLoginModal() {
-        loginModal.classList.remove('hidden');
-        loginModal.classList.add('flex');
-        document.getElementById('login-error').classList.add('hidden');
-    }
-
-    function closeLoginModal() {
-        loginModal.classList.add('hidden');
-        loginModal.classList.remove('flex');
-        document.getElementById('username').value = '';
-        document.getElementById('password').value = '';
-    }
-
-    function attemptLogin() {
-        const user = document.getElementById('username').value;
-        const pass = document.getElementById('password').value;
-        const errorEl = document.getElementById('login-error');
-
-        if (user === 'admin' && pass === 'admin') {
-            isLoggedIn = true;
-            closeLoginModal();
-            switchToAdmin();
-            showToast('সফলভাবে লগইন করেছেন!');
-        } else {
-            errorEl.classList.remove('hidden');
-        }
-    }
-
-    function logout() {
-        isLoggedIn = false;
-        switchToPublic();
-        showToast('লগআউট সফল হয়েছে।');
-    }
-
-    function switchToAdmin() {
-        publicView.classList.add('hidden');
-        adminView.classList.remove('hidden');
-        adminView.classList.add('flex');
-        // Fade in
-        setTimeout(() => {
-            adminView.classList.remove('opacity-0');
-            adminView.classList.add('opacity-100');
-        }, 50);
-        window.scrollTo(0,0);
-    }
-
-    function switchToPublic() {
-        adminView.classList.remove('opacity-100');
-        adminView.classList.add('opacity-0');
-        
-        setTimeout(() => {
-            adminView.classList.add('hidden');
-            adminView.classList.remove('flex');
-            
-            publicView.classList.remove('hidden');
-            renderPublicPanjika(); 
-            renderPublicSponsors(); // Update sponsors on public return
-            setupScrollObserver(); 
-            window.scrollTo(0,0);
-        }, 300);
-    }
-
-    // --- STREAMING_CHUNK:Admin CRUD Operations ---
-    function renderAdminTable() {
-        adminTableBody.innerHTML = panjikaData.map(item => `
-            <tr class="border-b hover:bg-gray-50 transition-colors group">
-                <td class="p-4 text-gray-700">${item.date}</td>
-                <td class="p-4 font-bold text-puja-darkred">${item.title}</td>
-                <td class="p-4 text-gray-600 max-w-xs truncate" title="${item.desc}">${item.desc}</td>
-                <td class="p-4 text-right whitespace-nowrap">
-                    <button onclick="openEditModal(${item.id})" class="text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-md transition-colors mr-2">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    <button onclick="deleteEvent(${item.id})" class="text-red-600 hover:text-red-800 bg-red-50 hover:bg-red-100 px-3 py-1 rounded-md transition-colors">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </td>
-            </tr>
-        `).join('');
-    }
-
-    function openEditModal(id = null) {
-        const modalTitle = document.getElementById('modal-title');
-        
-        if (id) {
-            modalTitle.innerText = "সম্পাদনা করুন (Edit)";
-            const item = panjikaData.find(i => i.id === id);
-            document.getElementById('edit-id').value = item.id;
-            document.getElementById('edit-date').value = item.date;
-            document.getElementById('edit-title').value = item.title;
-            document.getElementById('edit-desc').value = item.desc;
-        } else {
-            modalTitle.innerText = "নতুন যোগ করুন (Add New)";
-            document.getElementById('edit-id').value = "";
-            document.getElementById('edit-date').value = "";
-            document.getElementById('edit-title').value = "";
-            document.getElementById('edit-desc').value = "";
-        }
-        
-        editModal.classList.remove('hidden');
-        editModal.classList.add('flex');
-    }
-
-    function closeEditModal() {
-        editModal.classList.add('hidden');
-        editModal.classList.remove('flex');
-    }
-
-    function saveEvent() {
-        const id = document.getElementById('edit-id').value;
-        const date = document.getElementById('edit-date').value.trim();
-        const title = document.getElementById('edit-title').value.trim();
-        const desc = document.getElementById('edit-desc').value.trim();
-
-        if(!date || !title) {
-            alert('তারিখ এবং তিথি আবশ্যক!');
-            return;
-        }
-
-        if (id) {
-            // Update
-            const index = panjikaData.findIndex(i => i.id == id);
-            panjikaData[index] = { id: Number(id), date, title, desc };
-            showToast('সফলভাবে আপডেট করা হয়েছে!');
-        } else {
-            // Add
-            const newId = panjikaData.length > 0 ? Math.max(...panjikaData.map(i => i.id)) + 1 : 1;
-            panjikaData.push({ id: newId, date, title, desc });
-            
-            // Sort roughly by date string parsing if needed, but append for now
-            // panjikaData.sort((a,b) => a.id - b.id);
-            
-            showToast('নতুন দিন যোগ করা হয়েছে!');
-        }
-
-        renderAdminTable();
-        closeEditModal();
-    }
-
-    function deleteEvent(id) {
-        if(confirm("আপনি কি নিশ্চিত যে এটি মুছে ফেলতে চান?")) {
-            panjikaData = panjikaData.filter(i => i.id !== id);
-            renderAdminTable();
-            showToast('সফলভাবে মুছে ফেলা হয়েছে!');
-        }
-    }
-
-    function saveMarquee() {
-        const newVal = document.getElementById('admin-marquee-input').value;
-        document.getElementById('marquee-text').innerText = newVal;
-        showToast('ঘোষণা আপডেট করা হয়েছে!');
-    }
-
-    // --- STREAMING_CHUNK:Participation Form Logic ---
-    function toggleFormFields() {
-        const eventType = document.getElementById('event-type').value;
-        const groupContainer = document.getElementById('group-members-container');
-        const themeContainer = document.getElementById('theme-container');
-        const groupInput = document.getElementById('group-members-input');
-
-        // Reset display and requirements
-        groupContainer.classList.add('hidden');
-        groupInput.required = false;
-        themeContainer.classList.add('hidden');
-        // Theme is always optional, so no need to manage required property for it
-
-        // Apply specific conditions
-        if (eventType === 'group_dance') {
-            groupContainer.classList.remove('hidden');
-            groupInput.required = true;
-            themeContainer.classList.remove('hidden'); // Show optional theme for group dance
-        }
-    }
-
-    function submitParticipationForm(event) {
-        event.preventDefault(); // Prevent page reload
-        
-        // Get form values
-        const name = document.getElementById('participant-name').value;
-        const type = document.getElementById('event-type').value;
-        const date = document.getElementById('event-date').value;
-        
-        // Handle photo upload (Create a local preview URL)
-        const fileInput = document.getElementById('file-upload');
-        let photoUrl = 'https://placehold.co/100x100/eeeeee/999999?text=No+Photo'; // Default fallback
-        if (fileInput.files && fileInput.files[0]) {
-            photoUrl = URL.createObjectURL(fileInput.files[0]);
-        }
-        
-        // Add to array and re-render
-        participantsData.push({ name, type, date, photo: photoUrl });
-        renderParticipants();
-        
-        // Show success messages
-        const successMsg = document.getElementById('form-success-message');
-        successMsg.classList.remove('hidden');
-        
-        // Hide inline success message after 6 seconds
-        setTimeout(() => { successMsg.classList.add('hidden'); }, 6000);
-        showToast('আবেদন সফল! আপনার নাম তালিকায় যুক্ত হয়েছে।');
-        
-        // Reset the form
-        event.target.reset();
-        document.getElementById('file-name-display').innerText = 'PNG, JPG, GIF up to 5MB';
-        toggleFormFields(); // Reset conditional fields
-    }
-
-    // --- STREAMING_CHUNK:Render Participants List ---
-    function getEventTypeName(val) {
-        if(val === 'solo_dance') return 'Solo Dance';
-        if(val === 'group_dance') return 'Group Dance';
-        if(val === 'karaoke') return 'Karaoke';
-        return val;
-    }
-
-    function getEventDateName(val) {
-        if(val === '17_oct') return 'October 17, 2026';
-        if(val === '18_oct') return 'October 18, 2026';
-        return val;
-    }
-
-    function renderParticipants() {
-        const tbody = document.getElementById('participants-table-body');
-        if(participantsData.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" class="text-center p-8 text-gray-500 italic">No participants registered yet.</td></tr>';
-            return;
-        }
-        
-        // Reverse maps to show newest submissions at the top
-        tbody.innerHTML = participantsData.map((p, index) => `
-            <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'}">
-                <td class="p-5 text-center">
-                    <img src="${p.photo}" alt="${p.name}" class="w-12 h-12 object-cover rounded-full border-2 border-gray-200 shadow-sm mx-auto" onerror="this.src='https://placehold.co/100x100/eeeeee/999999?text=User'">
-                </td>
-                <td class="p-5 font-bold text-gray-800 text-base">${p.name}</td>
-                <td class="p-5"><span class="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-md text-xs font-bold border border-gray-200 shadow-sm">${getEventTypeName(p.type)}</span></td>
-                <td class="p-5 text-gray-600 font-medium"><i class="fa-regular fa-calendar text-puja-red mr-2"></i>${getEventDateName(p.date)}</td>
-            </tr>
-        `).reverse().join(''); 
-    }
-
-    // --- Utility: Toast ---
-    function showToast(message) {
-        const toast = document.getElementById("toast");
-        document.getElementById("toast-msg").innerText = message;
-        toast.className = "show";
-        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-    }
 </script>
 </body>
 </html>
