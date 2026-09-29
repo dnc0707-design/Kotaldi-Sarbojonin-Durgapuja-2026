@@ -884,6 +884,29 @@
                 </table>
             </div>
         </div>
+
+        <!-- Participants Management -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mt-8">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+                <h2 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-users-gear text-puja-red mr-2"></i>অংশগ্রহণকারী ব্যবস্থাপনা (Participants)</h2>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-100 text-gray-600 text-sm uppercase">
+                            <th class="p-4 font-bold border-b w-20">ছবি</th>
+                            <th class="p-4 font-bold border-b">নাম (Name)</th>
+                            <th class="p-4 font-bold border-b">বিবরণ (Details)</th>
+                            <th class="p-4 font-bold border-b text-right">অ্যাকশন</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-participants-body" class="text-gray-800 text-sm">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
 </div>
 
@@ -1001,6 +1024,49 @@
     </div>
 </div>
 
+<!-- Participant Edit Modal (Admin) -->
+<div id="participant-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
+        <div class="bg-gray-100 p-4 border-b flex justify-between items-center">
+            <h3 class="font-bold text-lg text-gray-800">অংশগ্রহণকারী সম্পাদনা (Edit Participant)</h3>
+            <button onclick="window.closeParticipantModal()" class="text-gray-500 hover:text-red-500 transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+        <div class="p-6 space-y-4">
+            <input type="hidden" id="edit-participant-id">
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">নাম (Name)</label>
+                <input type="text" id="edit-participant-name" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-red focus:outline-none">
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">অংশগ্রহণের ধরন</label>
+                    <select id="edit-participant-type" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-red focus:outline-none">
+                        <option value="solo_dance">একক নৃত্য (Solo Dance)</option>
+                        <option value="group_dance">দলগত নৃত্য (Group Dance)</option>
+                        <option value="karaoke">ক্যারওকে (Karaoke)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">তারিখ</label>
+                    <select id="edit-participant-date" class="border rounded-lg w-full py-2 px-3 text-gray-700 focus:ring-2 focus:ring-puja-red focus:outline-none">
+                        <option value="17_oct">১৭ অক্টোবর (শনিবার)</option>
+                        <option value="18_oct">১৮ অক্টোবর (রবিবার)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="pt-4 flex justify-end gap-3">
+                <button onclick="window.closeParticipantModal()" class="px-5 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">বাতিল</button>
+                <button onclick="window.saveParticipant()" class="px-5 py-2 bg-puja-red text-white font-bold rounded-lg hover:bg-puja-darkred transition-colors shadow">সংরক্ষণ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Toast Notification -->
 <div id="toast"><i class="fa-solid fa-check-circle text-green-400 mr-2"></i> <span id="toast-msg">সফলভাবে সংরক্ষিত হয়েছে!</span></div>
 
@@ -1105,6 +1171,7 @@
             // Sort by timestamp if exists
             participantsData.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
             window.renderParticipants();
+            window.renderAdminParticipantsTable();
         }, (error) => console.error(error));
 
         // 5. Listen to Gallery Collection
@@ -1137,6 +1204,7 @@
         window.renderAdminTable();
         window.renderPublicSponsors();
         window.renderParticipants();
+        window.renderAdminParticipantsTable();
         window.renderPublicGallery();
         window.renderAdminGalleryTable();
         initializeAppAuth(); // Trigger firebase Auth and Listeners
@@ -1292,6 +1360,94 @@
                 <td class="p-5 text-gray-600 font-medium"><i class="fa-regular fa-calendar text-puja-red mr-2"></i>${getEventDateName(p.date)}</td>
             </tr>
         `).join(''); 
+    }
+
+    // Admin Participants Management
+    window.renderAdminParticipantsTable = function() {
+        const tbody = document.getElementById('admin-participants-body');
+        if (!tbody) return;
+        
+        if(participantsData.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" class="text-center p-6 text-gray-500">কোনো ডেটা পাওয়া যায়নি।</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = participantsData.map(item => `
+            <tr class="border-b hover:bg-gray-50 transition-colors">
+                <td class="p-4">
+                    <img src="${item.photo}" class="w-12 h-12 object-cover rounded-full border shadow-sm" onerror="this.src='https://placehold.co/100x100?text=User'">
+                </td>
+                <td class="p-4">
+                    <div class="font-bold text-gray-800 text-base">${item.name}</div>
+                </td>
+                <td class="p-4">
+                    <div class="text-xs font-bold text-gray-700 bg-gray-200 inline-block px-2 py-1 rounded shadow-sm mb-1">${getEventTypeName(item.type)}</div>
+                    <div class="text-xs text-gray-500">${getEventDateName(item.date)}</div>
+                </td>
+                <td class="p-4 text-right whitespace-nowrap">
+                    <button onclick="window.openParticipantModal('${item.dbId}')" class="text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-md transition-colors mr-2">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button onclick="window.deleteParticipant('${item.dbId}')" class="text-red-600 hover:text-red-800 bg-red-50 hover:bg-red-100 px-3 py-1 rounded-md transition-colors">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    window.openParticipantModal = function(dbId) {
+        const item = participantsData.find(i => i.dbId === dbId);
+        if(!item) return;
+        
+        document.getElementById('edit-participant-id').value = item.dbId;
+        document.getElementById('edit-participant-name').value = item.name;
+        document.getElementById('edit-participant-type').value = item.type;
+        document.getElementById('edit-participant-date').value = item.date;
+
+        document.getElementById('participant-modal').classList.remove('hidden');
+        document.getElementById('participant-modal').classList.add('flex');
+    }
+
+    window.closeParticipantModal = function() {
+        document.getElementById('participant-modal').classList.add('hidden');
+        document.getElementById('participant-modal').classList.remove('flex');
+    }
+
+    window.saveParticipant = async function() {
+        if (!auth.currentUser) return;
+        
+        const dbId = document.getElementById('edit-participant-id').value;
+        const name = document.getElementById('edit-participant-name').value.trim();
+        const type = document.getElementById('edit-participant-type').value;
+        const date = document.getElementById('edit-participant-date').value;
+
+        if(!name) {
+            showToast('নাম প্রদান করা আবশ্যক!');
+            return;
+        }
+
+        try {
+            await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'participants', dbId), {
+                name, type, date
+            }, { merge: true });
+            
+            showToast('অংশগ্রহণকারী আপডেট করা হয়েছে!');
+            window.closeParticipantModal();
+        } catch (e) {
+            console.error(e);
+            showToast('তথ্য সংরক্ষণে ত্রুটি হয়েছে!');
+        }
+    }
+
+    window.deleteParticipant = async function(dbId) {
+        if (!auth.currentUser) return;
+        try {
+            await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'participants', dbId));
+            showToast('অংশগ্রহণকারী মুছে ফেলা হয়েছে!');
+        } catch(e) {
+            console.error(e);
+        }
     }
 
     window.renderPublicGallery = function() {
