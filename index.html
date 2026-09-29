@@ -889,6 +889,9 @@
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mt-8">
             <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
                 <h2 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-users-gear text-puja-red mr-2"></i>অংশগ্রহণকারী ব্যবস্থাপনা (Participants)</h2>
+                <button onclick="window.downloadParticipantsCSV()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors shadow flex items-center text-sm font-bold">
+                    <i class="fa-solid fa-file-excel mr-2"></i>ডাউনলোড (Excel)
+                </button>
             </div>
             
             <div class="overflow-x-auto">
@@ -1710,6 +1713,18 @@
         const type = document.getElementById('event-type').value;
         const date = document.getElementById('event-date').value;
         
+        // Duplicate Entry Check
+        const isDuplicate = participantsData.some(p => 
+            p.name.toLowerCase().trim() === name.toLowerCase().trim() && 
+            p.type === type && 
+            p.date === date
+        );
+
+        if (isDuplicate) {
+            window.showToast('এই অংশগ্রহণকারী ইতিমধ্যে নিবন্ধিত আছেন! (Duplicate Entry)');
+            return;
+        }
+
         const fileInput = document.getElementById('file-upload');
         const initText = name.substring(0, 2).toUpperCase();
         let photoUrl = `https://placehold.co/100x100/eeeeee/999999?text=${initText}`; 
@@ -1871,6 +1886,42 @@
         if(val === '18_oct') return 'October 18, 2026';
         return val;
     }
+
+    window.downloadParticipantsCSV = function() {
+        if (participantsData.length === 0) {
+            window.showToast('ডাউনলোড করার মতো কোনো ডেটা নেই! (No data)');
+            return;
+        }
+
+        // Define CSV headers
+        const headers = ['Name', 'Event Type', 'Date', 'Registration Time'];
+        
+        // Format rows
+        const rows = participantsData.map(p => {
+            const dateObj = new Date(p.timestamp || Date.now());
+            const timeString = dateObj.toLocaleString('en-IN');
+            return [
+                `"${p.name.replace(/"/g, '""')}"`, // Escape quotes for CSV safety
+                `"${getEventTypeName(p.type)}"`,
+                `"${getEventDateName(p.date)}"`,
+                `"${timeString}"`
+            ].join(',');
+        });
+
+        // Combine headers and rows (adding BOM \uFEFF for proper UTF-8 Excel rendering)
+        const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + headers.join(',') + '\n' + rows.join('\n');
+        
+        // Trigger download
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "Kotaldi_Puja_Participants_2026.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        window.showToast('তালিকা ডাউনলোড শুরু হয়েছে!');
+    };
 
     window.showToast = function(message) {
         const toast = document.getElementById("toast");
