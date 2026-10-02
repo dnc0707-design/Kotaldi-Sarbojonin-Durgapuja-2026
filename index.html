@@ -230,14 +230,38 @@
                         </p>
 
                         <div class="space-y-4">
-                            <!-- 17th Oct: Maha Shashthi -->
+                            <!-- 15th Oct: Panchami -->
                             <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
                                     <i class="fa-solid fa-ribbon text-white text-2xl"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-puja-gold text-sm font-bold uppercase tracking-wider mb-1">১৭ অক্টোবর (মহা ষষ্ঠী), শনিবার</h4>
+                                    <h4 class="text-puja-gold text-sm font-bold uppercase tracking-wider mb-1">১৫ অক্টোবর (পঞ্চমী), বৃহস্পতিবার</h4>
                                     <h3 class="text-white text-lg md:text-xl font-bold">উদ্বোধনী অনুষ্ঠান</h3>
+                                </div>
+                            </div>
+
+                            <!-- 16th Oct: Maha Shashthi -->
+                            <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
+                                <div class="w-14 h-14 bg-pink-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
+                                    <i class="fa-solid fa-music text-white text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-puja-gold text-sm font-bold uppercase tracking-wider mb-1">১৬ অক্টোবর (মহা ষষ্ঠী), শুক্রবার</h4>
+                                    <h3 class="text-white text-lg md:text-xl font-bold">Local সঙ্গীতানুষ্ঠান</h3>
+                                    <p class="text-gray-300 text-sm mt-1">আঞ্চলিক শিল্পীদের বিশেষ পরিবেশনা</p>
+                                </div>
+                            </div>
+
+                            <!-- 17th Oct: Maha Saptami -->
+                            <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl flex items-center gap-4 hover:bg-white/20 transition duration-300">
+                                <div class="w-14 h-14 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-puja-gold">
+                                    <i class="fa-solid fa-microphone text-white text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-puja-gold text-sm font-bold uppercase tracking-wider mb-1">১৭ অক্টোবর (মহা সপ্তমী), শনিবার</h4>
+                                    <h3 class="text-white text-lg md:text-xl font-bold">Local সঙ্গীতানুষ্ঠান</h3>
+                                    <p class="text-gray-300 text-sm mt-1">আঞ্চলিক শিল্পীদের বিশেষ পরিবেশনা</p>
                                 </div>
                             </div>
 
@@ -541,6 +565,8 @@
                             <label class="block text-gray-700 text-sm font-bold mb-2">তারিখ (Preferred Date) <span class="text-red-500">*</span></label>
                             <select id="event-date" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all">
                                 <option value="">-- নির্বাচন করুন (Select) --</option>
+                                <option value="15_oct">১৫ অক্টোবর (বৃহস্পতিবার)</option>
+                                <option value="16_oct">১৬ অক্টোবর (শুক্রবার)</option>
                                 <option value="17_oct">১৭ অক্টোবর (শনিবার)</option>
                                 <option value="18_oct">১৮ অক্টোবর (রবিবার)</option>
                             </select>
@@ -585,6 +611,11 @@
                     </div>
 
                     <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">গানের নাম / ট্র্যাক (Song Name / Track) <span class="text-red-500">*</span></label>
+                        <input type="text" id="song-name-input" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all" placeholder="গানের নাম বা ট্র্যাকের বিবরণ লিখুন">
+                    </div>
+
+                    <div class="mb-6">
                         <label class="block text-gray-700 text-sm font-bold mb-2">ছবি আপলোড (Upload Photo) <span class="text-gray-400 font-normal ml-1">(ঐচ্ছিক)</span></label>
                         <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50 hover:bg-gray-100 transition-all cursor-pointer" onclick="document.getElementById('file-upload').click()">
                             <div class="space-y-1 text-center">
@@ -623,6 +654,7 @@
                                 <tr class="bg-puja-cream text-puja-darkred text-sm uppercase border-b border-gray-200">
                                     <th class="p-5 font-bold w-20 text-center">Photo</th>
                                     <th class="p-5 font-bold">Name / Group Name</th>
+                                    <th class="p-5 font-bold">Song Name</th>
                                     <th class="p-5 font-bold">Category</th>
                                     <th class="p-5 font-bold">Performance Date</th>
                                 </tr>
@@ -1199,6 +1231,7 @@
         const name = document.getElementById('participant-name').value;
         const type = document.getElementById('event-type').value;
         const date = document.getElementById('event-date').value;
+        const songName = document.getElementById('song-name-input').value;
         
         let photoUrl = 'https://placehold.co/100x100/eeeeee/999999?text=No+Photo';
         const fileInput = document.getElementById('file-upload');
@@ -1207,7 +1240,7 @@
         }
 
         const newId = participantsData.length > 0 ? Math.max(...participantsData.map(i => i.id)) + 1 : 1;
-        participantsData.push({ id: newId, name, type, date, photo: photoUrl });
+        participantsData.push({ id: newId, name, songName, type, date, photo: photoUrl });
         renderParticipants();
 
         const successMsg = document.getElementById('form-success-message');
@@ -1239,15 +1272,21 @@
     // --- Render Functions ---
     window.renderParticipants = () => {
         const getTypeName = (val) => val === 'solo_dance' ? 'Solo Dance' : (val === 'group_dance' ? 'Group Dance' : 'Karaoke');
-        const getDateName = (val) => val === '17_oct' ? '17 Oct' : '18 Oct';
+        const getDateName = (val) => {
+            if(val === '15_oct') return '15 Oct';
+            if(val === '16_oct') return '16 Oct';
+            if(val === '17_oct') return '17 Oct';
+            return '18 Oct';
+        };
 
         const tbody = document.getElementById('participants-table-body');
         if(tbody) {
-            tbody.innerHTML = participantsData.length === 0 ? '<tr><td colspan="4" class="text-center p-8 text-gray-500 italic">কোনো আবেদন নেই।</td></tr>' :
+            tbody.innerHTML = participantsData.length === 0 ? '<tr><td colspan="5" class="text-center p-8 text-gray-500 italic">কোনো আবেদন নেই।</td></tr>' :
             participantsData.map((p, index) => `
                 <tr class="border-b ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}">
                     <td class="p-4 text-center"><img src="${p.photo}" class="w-10 h-10 object-cover rounded-full mx-auto shadow-sm"></td>
                     <td class="p-4 font-bold text-gray-800">${p.name}</td>
+                    <td class="p-4 font-medium text-gray-700">${p.songName || '-'}</td>
                     <td class="p-4"><span class="bg-gray-200 px-2 py-1 rounded text-xs font-bold">${getTypeName(p.type)}</span></td>
                     <td class="p-4">${getDateName(p.date)}</td>
                 </tr>
