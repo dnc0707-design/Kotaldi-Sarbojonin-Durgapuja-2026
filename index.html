@@ -181,7 +181,17 @@
         
         <!-- Hero Section -->
         <section id="home" class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 hero-pattern overflow-hidden min-h-[70vh] flex items-center justify-center">
-            <div class="absolute top-20 left-10 opacity-30 text-puja-gold animate-pulse">
+            
+            <!-- Blinking Participate Buttons -->
+            <button onclick="showParticipantView()" class="absolute top-24 left-2 md:left-10 z-40 bg-gradient-to-r from-puja-gold to-yellow-400 text-puja-darkred px-4 py-2 md:px-6 md:py-3 rounded-full font-bold shadow-[0_0_20px_rgba(251,194,34,1)] animate-[pulse_1s_ease-in-out_infinite] border-2 border-white transform hover:scale-105 transition-all text-xs md:text-sm flex items-center gap-2">
+                <i class="fa-solid fa-masks-theater"></i> <span class="hidden sm:inline">অংশগ্রহণ করুন</span><span class="sm:hidden">অংশগ্রহণ</span>
+            </button>
+            <button onclick="showParticipantView()" class="absolute top-24 right-2 md:right-10 z-40 bg-gradient-to-r from-puja-gold to-yellow-400 text-puja-darkred px-4 py-2 md:px-6 md:py-3 rounded-full font-bold shadow-[0_0_20px_rgba(251,194,34,1)] animate-[pulse_1s_ease-in-out_infinite] border-2 border-white transform hover:scale-105 transition-all text-xs md:text-sm flex items-center gap-2">
+                <span class="hidden sm:inline">অংশগ্রহণ করুন</span><span class="sm:hidden">অংশগ্রহণ</span> <i class="fa-solid fa-masks-theater"></i>
+            </button>
+
+            <!-- Decorative Elements -->
+            <div class="absolute top-40 left-10 opacity-30 text-puja-gold animate-pulse hidden md:block">
                 <i class="fa-solid fa-bell text-5xl"></i>
             </div>
             <div class="absolute bottom-20 right-10 opacity-30 text-puja-gold animate-pulse" style="animation-delay: 1s;">
