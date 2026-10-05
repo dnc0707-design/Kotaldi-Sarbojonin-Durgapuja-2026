@@ -601,7 +601,7 @@
                         </div>
                         <div>
                             <label class="block text-gray-700 text-sm font-bold mb-2">বয়স বিভাগ (Age Category) <span class="text-red-500">*</span></label>
-                            <select required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all">
+                            <select id="age-category" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all">
                                 <option value="">-- নির্বাচন করুন (Select) --</option>
                                 <option value="under_10">ক-বিভাগ: অনূর্ধ্ব ১০ বছর (Under 10)</option>
                                 <option value="11_to_15">খ-বিভাগ: ১১ - ১৫ বছর (11 - 15 yrs)</option>
@@ -657,6 +657,34 @@
                     <div class="h-1 w-24 bg-puja-gold mx-auto rounded-full mb-4"></div>
                 </div>
 
+                <!-- Filters and Sort Toolbar -->
+                <div class="flex flex-col md:flex-row gap-4 mb-6 justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100 fade-in-up">
+                    <div class="flex items-center gap-2 w-full md:w-auto">
+                        <i class="fa-solid fa-filter text-puja-red"></i>
+                        <span class="text-sm font-bold text-gray-700 whitespace-nowrap">ফিল্টার ও সর্টিং:</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto flex-grow justify-end">
+                        <select id="filter-date" onchange="renderParticipants()" class="border border-gray-300 rounded-lg py-2 px-3 text-sm text-gray-700 focus:ring-2 focus:ring-puja-red outline-none">
+                            <option value="all">সব তারিখ (All Dates)</option>
+                            <option value="15_oct">১৫ অক্টোবর</option>
+                            <option value="16_oct">১৬ অক্টোবর</option>
+                            <option value="17_oct">১৭ অক্টোবর</option>
+                            <option value="18_oct">১৮ অক্টোবর</option>
+                        </select>
+                        <select id="filter-category" onchange="renderParticipants()" class="border border-gray-300 rounded-lg py-2 px-3 text-sm text-gray-700 focus:ring-2 focus:ring-puja-red outline-none">
+                            <option value="all">সব বিভাগ (All Categories)</option>
+                            <option value="solo_dance">একক নৃত্য</option>
+                            <option value="group_dance">দলগত নৃত্য</option>
+                            <option value="karaoke">ক্যারওকে</option>
+                        </select>
+                        <select id="sort-by" onchange="renderParticipants()" class="border border-gray-300 rounded-lg py-2 px-3 text-sm text-gray-700 focus:ring-2 focus:ring-puja-red outline-none bg-puja-cream font-bold">
+                            <option value="newest">নতুন (Newest First)</option>
+                            <option value="date">তারিখ অনুযায়ী (By Date)</option>
+                            <option value="category">বিভাগ অনুযায়ী (By Event)</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden fade-in-up">
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
@@ -665,7 +693,8 @@
                                     <th class="p-5 font-bold w-20 text-center">Photo</th>
                                     <th class="p-5 font-bold">Name / Group Name</th>
                                     <th class="p-5 font-bold">Song Name</th>
-                                    <th class="p-5 font-bold">Category</th>
+                                    <th class="p-5 font-bold">Event Type</th>
+                                    <th class="p-5 font-bold">Age Category</th>
                                     <th class="p-5 font-bold">Performance Date</th>
                                 </tr>
                             </thead>
@@ -1285,6 +1314,7 @@
         const type = document.getElementById('event-type').value;
         const date = document.getElementById('event-date').value;
         const songName = document.getElementById('song-name-input').value;
+        const ageCategory = document.getElementById('age-category').value;
         
         let defaultPhotoUrl = 'https://placehold.co/100x100/eeeeee/999999?text=No+Photo';
         const fileInput = document.getElementById('file-upload');
@@ -1298,6 +1328,7 @@
                     name: name,
                     songName: songName,
                     type: type,
+                    ageCategory: ageCategory,
                     date: date,
                     photo: photoData
                 });
@@ -1377,24 +1408,57 @@
             if(val === '17_oct') return '17 Oct';
             return '18 Oct';
         };
+        const getAgeName = (val) => {
+            if(val === 'under_10') return 'Under 10';
+            if(val === '11_to_15') return '11-15 yrs';
+            if(val === 'above_16') return '16+ yrs';
+            return '-';
+        };
+
+        const filterDateEl = document.getElementById('filter-date');
+        const filterCategoryEl = document.getElementById('filter-category');
+        const sortEl = document.getElementById('sort-by');
+        
+        const dateFilter = filterDateEl ? filterDateEl.value : 'all';
+        const catFilter = filterCategoryEl ? filterCategoryEl.value : 'all';
+        const sortBy = sortEl ? sortEl.value : 'newest';
+
+        // Apply Filtering and Sorting
+        let filteredData = [...window.participantsData];
+        
+        if (dateFilter !== 'all') {
+            filteredData = filteredData.filter(p => p.date === dateFilter);
+        }
+        if (catFilter !== 'all') {
+            filteredData = filteredData.filter(p => p.type === catFilter);
+        }
+
+        if (sortBy === 'date') {
+            filteredData.sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+        } else if (sortBy === 'category') {
+            filteredData.sort((a, b) => (a.type || '').localeCompare(b.type || ''));
+        } else {
+            filteredData.sort((a, b) => b.id - a.id); // newest first
+        }
 
         const tbody = document.getElementById('participants-table-body');
         if(tbody) {
-            tbody.innerHTML = window.participantsData.length === 0 ? '<tr><td colspan="5" class="text-center p-8 text-gray-500 italic">কোনো আবেদন নেই।</td></tr>' :
-            window.participantsData.map((p, index) => `
-                <tr class="border-b ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}">
+            tbody.innerHTML = filteredData.length === 0 ? '<tr><td colspan="6" class="text-center p-8 text-gray-500 italic">কোনো আবেদন নেই বা ফিল্টারের সাথে মিল নেই।</td></tr>' :
+            filteredData.map((p, index) => `
+                <tr class="border-b ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100 transition-colors">
                     <td class="p-4 text-center"><img src="${p.photo}" class="w-10 h-10 object-cover rounded-full mx-auto shadow-sm"></td>
                     <td class="p-4 font-bold text-gray-800">${p.name}</td>
                     <td class="p-4 font-medium text-gray-700">${p.songName || '-'}</td>
-                    <td class="p-4"><span class="bg-gray-200 px-2 py-1 rounded text-xs font-bold">${getTypeName(p.type)}</span></td>
-                    <td class="p-4">${getDateName(p.date)}</td>
+                    <td class="p-4"><span class="bg-puja-cream text-puja-darkred px-2 py-1 rounded text-xs font-bold border border-puja-gold/30">${getTypeName(p.type)}</span></td>
+                    <td class="p-4"><span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-bold border border-gray-200">${getAgeName(p.ageCategory)}</span></td>
+                    <td class="p-4 font-medium text-sm text-gray-800">${getDateName(p.date)}</td>
                 </tr>
-            `).join(''); // Note: reversed implicitly via sorting logic above
+            `).join('');
         }
 
         const adminTbody = document.getElementById('admin-participants-body');
         if(adminTbody) {
-            adminTbody.innerHTML = window.participantsData.map(p => `
+            adminTbody.innerHTML = filteredData.map(p => `
                 <tr class="border-b hover:bg-gray-50">
                     <td class="p-4 font-bold">${p.name}</td>
                     <td class="p-4">${getTypeName(p.type)}</td>
