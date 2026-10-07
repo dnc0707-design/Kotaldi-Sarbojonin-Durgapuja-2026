@@ -575,8 +575,6 @@
                             <label class="block text-gray-700 text-sm font-bold mb-2">তারিখ (Preferred Date) <span class="text-red-500">*</span></label>
                             <select id="event-date" required class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-puja-red focus:outline-none transition-all">
                                 <option value="">-- নির্বাচন করুন (Select) --</option>
-                                <option value="15_oct">১৫ অক্টোবর (বৃহস্পতিবার)</option>
-                                <option value="16_oct">১৬ অক্টোবর (শুক্রবার)</option>
                                 <option value="17_oct">১৭ অক্টোবর (শনিবার)</option>
                                 <option value="18_oct">১৮ অক্টোবর (রবিবার)</option>
                             </select>
@@ -666,8 +664,6 @@
                     <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto flex-grow justify-end">
                         <select id="filter-date" onchange="renderParticipants()" class="border border-gray-300 rounded-lg py-2 px-3 text-sm text-gray-700 focus:ring-2 focus:ring-puja-red outline-none">
                             <option value="all">সব তারিখ (All Dates)</option>
-                            <option value="15_oct">১৫ অক্টোবর</option>
-                            <option value="16_oct">১৬ অক্টোবর</option>
                             <option value="17_oct">১৭ অক্টোবর</option>
                             <option value="18_oct">১৮ অক্টোবর</option>
                         </select>
@@ -1403,16 +1399,15 @@
     window.renderParticipants = () => {
         const getTypeName = (val) => val === 'solo_dance' ? 'Solo Dance' : (val === 'group_dance' ? 'Group Dance' : 'Karaoke');
         const getDateName = (val) => {
-            if(val === '15_oct') return '15 Oct';
-            if(val === '16_oct') return '16 Oct';
             if(val === '17_oct') return '17 Oct';
-            return '18 Oct';
+            if(val === '18_oct') return '18 Oct';
+            return val || '-';
         };
         const getAgeName = (val) => {
             if(val === 'under_10') return 'Under 10';
             if(val === '11_to_15') return '11-15 yrs';
             if(val === 'above_16') return '16+ yrs';
-            return '-';
+            return val ? val : 'N/A';
         };
 
         const filterDateEl = document.getElementById('filter-date');
