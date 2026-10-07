@@ -1082,8 +1082,14 @@
                 <input type="text" id="gallery-title-input" class="border rounded-lg w-full py-2 px-3 focus:ring-2 focus:ring-puja-red outline-none" placeholder="যেমন: সিঁদুর খেলা">
             </div>
             <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">ছবি আপলোড (Upload Image from Device)</label>
+                <input type="file" id="gallery-file-input" accept="image/*" class="border rounded-lg w-full py-2 px-3 text-sm focus:ring-2 focus:ring-puja-red outline-none">
+                <p class="text-xs text-gray-500 mt-1">Maximum size: 1MB. (Or you can use an image link below)</p>
+            </div>
+            <div class="text-center text-gray-400 font-bold text-xs">--- অথবা (OR) ---</div>
+            <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2">ছবির URL (Image Link)</label>
-                <textarea id="gallery-url-input" rows="3" class="border rounded-lg w-full py-2 px-3 focus:ring-2 focus:ring-puja-red outline-none" placeholder="https://..."></textarea>
+                <textarea id="gallery-url-input" rows="2" class="border rounded-lg w-full py-2 px-3 focus:ring-2 focus:ring-puja-red outline-none" placeholder="https://..."></textarea>
             </div>
             <div class="pt-4 flex justify-end gap-3">
                 <button onclick="closeGalleryModal()" class="px-5 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">বাতিল</button>
@@ -1151,11 +1157,12 @@
     window.sponsorsData = [
         { id: 1, name: "Kotaldi Jewellers", type: "image", media: "https://placehold.co/600x200/FBC222/7f1d1d?text=Kotaldi+Jewellers", link: "#" }
     ];
-    window.galleryData = [
-        { dbId: 'default1', title: 'প্রতিমা প্রস্তুতি', url: 'https://placehold.co/600x600/7f1d1d/FFF5E3?text=Idol+Preparation' },
-        { dbId: 'default2', title: 'মণ্ডপ সজ্জা', url: 'https://placehold.co/1200x600/F97E04/FFF5E3?text=Pandal+Design' },
-        { dbId: 'default3', title: 'সিঁদুর খেলা', url: 'https://placehold.co/600x600/FBC222/7f1d1d?text=Sindoor+Khela' }
+    const defaultGalleryImages = [
+        { dbId: 'default1', id: 3, title: 'প্রতিমা প্রস্তুতি', url: 'https://placehold.co/600x600/7f1d1d/FFF5E3?text=Idol+Preparation' },
+        { dbId: 'default2', id: 2, title: 'মণ্ডপ সজ্জা', url: 'https://placehold.co/1200x600/F97E04/FFF5E3?text=Pandal+Design' },
+        { dbId: 'default3', id: 1, title: 'সিঁদুর খেলা', url: 'https://placehold.co/600x600/FBC222/7f1d1d?text=Sindoor+Khela' }
     ];
+    window.galleryData = [...defaultGalleryImages];
     window.participantsData = []; // Will be populated by Firestore
     window.adRequestsData = [];
     window.panjikaData = [
@@ -1192,13 +1199,13 @@
 
                 const galleryRef = collection(db, 'artifacts', appId, 'public', 'data', 'gallery');
                 onSnapshot(galleryRef, (snapshot) => {
-                    if (!snapshot.empty) {
-                        window.galleryData = [];
-                        snapshot.forEach(doc => {
-                            window.galleryData.push({ dbId: doc.id, ...doc.data() });
-                        });
-                        window.galleryData.sort((a, b) => b.id - a.id);
-                    }
+                    let dbImages = [];
+                    snapshot.forEach(doc => {
+                        dbImages.push({ dbId: doc.id, ...doc.data() });
+                    });
+                    // Combine db images with default images so defaults never disappear
+                    window.galleryData = [...dbImages, ...defaultGalleryImages];
+                    window.galleryData.sort((a, b) => b.id - a.id);
                     window.renderGallery();
                 });
 
@@ -1543,6 +1550,7 @@
     window.openGalleryModal = () => {
         document.getElementById('gallery-title-input').value = '';
         document.getElementById('gallery-url-input').value = '';
+        document.getElementById('gallery-file-input').value = '';
         document.getElementById('gallery-modal').classList.remove('hidden');
         document.getElementById('gallery-modal').classList.add('flex');
     };
@@ -1554,22 +1562,42 @@
 
     window.saveGalleryImage = async () => {
         const title = document.getElementById('gallery-title-input').value;
-        const url = document.getElementById('gallery-url-input').value;
+        const urlInput = document.getElementById('gallery-url-input').value;
+        const fileInput = document.getElementById('gallery-file-input');
         
-        if (!title || !url) return alert('দয়া করে শিরোনাম এবং লিংক দিন!');
-        if (!auth.currentUser) return window.showToast('দয়া করে অপেক্ষা করুন...');
+        if (!title) return alert('দয়া করে ছবির শিরোনাম দিন! (Title required)');
+        if (!auth.currentUser) return window.showToast('Please wait for database connection...');
 
-        try {
-            await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'gallery'), {
-                id: Date.now(),
-                title: title,
-                url: url
-            });
-            window.showToast('গ্যালারিতে ছবি যোগ করা হয়েছে!');
-            window.closeGalleryModal();
-        } catch(e) {
-            console.error(e);
-            window.showToast('ত্রুটি হয়েছে!');
+        const saveToDb = async (imageUrl) => {
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'gallery'), {
+                    id: Date.now(),
+                    title: title,
+                    url: imageUrl
+                });
+                window.showToast('গ্যালারিতে ছবি যোগ করা হয়েছে!');
+                window.closeGalleryModal();
+            } catch(e) {
+                console.error(e);
+                window.showToast('ত্রুটি হয়েছে!');
+            }
+        };
+
+        if (fileInput.files && fileInput.files[0]) {
+            const file = fileInput.files[0];
+            if (file.size > 1000 * 1024) { 
+                window.showToast('ছবির সাইজ 1MB এর কম হতে হবে!');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                saveToDb(reader.result);
+            };
+            reader.readAsDataURL(file);
+        } else if (urlInput) {
+            saveToDb(urlInput);
+        } else {
+            alert('দয়া করে ছবি আপলোড করুন অথবা লিংক দিন!');
         }
     };
 
