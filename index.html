@@ -949,8 +949,30 @@
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-gray-100 text-gray-600 text-sm uppercase">
-                            <th class="p-4 font-bold border-b w-24">মিডিয়া</th>
-                            <th class="p-4 font-bold border-b">নাম</th>
+                            <th class="p-4 font-bold border-b w-24">নাম</th>
+                            <th class="p-4 font-bold border-b">বিভাগ</th>
+                            <th class="p-4 font-bold border-b text-right">অ্যাকশন</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-participants-body" class="text-gray-800 text-sm"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sponsors / Ads Management -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50 flex-wrap gap-4">
+                <h2 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-handshake text-green-600 mr-2"></i>বিজ্ঞাপনদাতা (Sponsors/Ads)</h2>
+                <button onclick="openSponsorModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 shadow flex items-center text-sm font-bold">
+                    <i class="fa-solid fa-plus mr-2"></i>নতুন বিজ্ঞাপন যোগ
+                </button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-100 text-gray-600 text-sm uppercase">
+                            <th class="p-4 font-bold border-b w-24">ব্যানার / ছবি</th>
+                            <th class="p-4 font-bold border-b">কোম্পানির নাম</th>
                             <th class="p-4 font-bold border-b text-right">অ্যাকশন</th>
                         </tr>
                     </thead>
@@ -1071,6 +1093,35 @@
     </div>
 </div>
 
+<!-- Sponsor Edit Modal -->
+<div id="sponsor-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
+        <div class="bg-gray-100 p-4 border-b flex justify-between items-center">
+            <h3 class="font-bold text-lg text-gray-800">বিজ্ঞাপন যোগ/সম্পাদনা</h3>
+            <button onclick="closeSponsorModal()" class="text-gray-500 hover:text-red-500"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        <div class="p-6 space-y-4">
+            <input type="hidden" id="edit-sponsor-dbid">
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">কোম্পানির নাম (Company Name)</label>
+                <input type="text" id="edit-sponsor-name" class="border rounded-lg w-full py-2 px-3 focus:ring-2 focus:ring-puja-red outline-none">
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">ছবির URL (Banner Image Link)</label>
+                <input type="text" id="edit-sponsor-media" class="border rounded-lg w-full py-2 px-3 focus:ring-2 focus:ring-puja-red outline-none" placeholder="https://...">
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">ওয়েবসাইট লিংক (Website Link - Optional)</label>
+                <input type="text" id="edit-sponsor-link" class="border rounded-lg w-full py-2 px-3 focus:ring-2 focus:ring-puja-red outline-none" placeholder="https://...">
+            </div>
+            <div class="pt-4 flex justify-end gap-3">
+                <button onclick="closeSponsorModal()" class="px-5 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">বাতিল</button>
+                <button onclick="saveSponsor()" class="px-5 py-2 bg-green-600 text-white font-bold rounded-lg shadow hover:bg-green-700">সংরক্ষণ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Toast -->
 <div id="toast"><i class="fa-solid fa-check-circle text-green-400 mr-2"></i> <span id="toast-msg">সফল!</span></div>
 
@@ -1149,6 +1200,17 @@
                         window.galleryData.sort((a, b) => b.id - a.id);
                     }
                     window.renderGallery();
+                });
+
+                const sponsorsRef = collection(db, 'artifacts', appId, 'public', 'data', 'sponsors');
+                onSnapshot(sponsorsRef, (snapshot) => {
+                    window.sponsorsData = [];
+                    snapshot.forEach(doc => {
+                        window.sponsorsData.push({ dbId: doc.id, ...doc.data() });
+                    });
+                    window.sponsorsData.sort((a, b) => b.id - a.id);
+                    window.renderPublicSponsors();
+                    window.renderAdminSponsorsTable();
                 });
             }
         } catch (error) {
@@ -1701,39 +1763,76 @@
 
     // Sponsors CRUD
     window.renderAdminSponsorsTable = () => {
-        document.getElementById('admin-sponsors-body').innerHTML = window.sponsorsData.map(s => `
-            <tr class="border-b hover:bg-gray-50">
-                <td class="p-4"><img src="${s.media}" class="w-16 h-10 object-cover rounded border"></td>
-                <td class="p-4 font-bold text-gray-800">${s.name}</td>
-                <td class="p-4 text-right whitespace-nowrap">
-                    <button onclick="openSponsorModal(${s.id})" class="text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded mr-2"><i class="fa-solid fa-pen-to-square"></i></button>
-                    <button onclick="deleteSponsor(${s.id})" class="text-red-600 bg-red-50 hover:bg-red-100 px-3 py-1 rounded"><i class="fa-solid fa-trash-can"></i></button>
-                </td>
-            </tr>
-        `).join('');
+        const tbody = document.getElementById('admin-sponsors-body');
+        if(tbody) {
+            tbody.innerHTML = window.sponsorsData.map(s => `
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="p-4"><img src="${s.media}" class="w-16 h-10 object-cover rounded border bg-gray-100"></td>
+                    <td class="p-4 font-bold text-gray-800">${s.name}</td>
+                    <td class="p-4 text-right whitespace-nowrap">
+                        <button onclick="openSponsorModal('${s.dbId}')" class="text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded mr-2"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteSponsor('${s.dbId}')" class="text-red-600 bg-red-50 hover:bg-red-100 px-3 py-1 rounded"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
     };
-    window.deleteSponsor = (id) => { if(confirm("মুছে ফেলতে চান?")) { window.sponsorsData = window.sponsorsData.filter(i => i.id !== id); window.renderAdminSponsorsTable(); window.showToast('মুছে ফেলা হয়েছে!'); } };
-    window.openSponsorModal = (id=null) => {
-        if(id) {
-            const item = window.sponsorsData.find(i=>i.id===id);
-            document.getElementById('edit-sponsor-id').value = item.id;
+    
+    window.deleteSponsor = async (dbId) => { 
+        if(confirm("আপনি কি নিশ্চিত যে এই বিজ্ঞাপনটি মুছে ফেলতে চান?")) { 
+            if (dbId && auth.currentUser) {
+                try {
+                    await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sponsors', dbId));
+                    window.showToast('মুছে ফেলা হয়েছে!');
+                } catch(e) { console.error(e); }
+            } else if (!dbId) {
+                window.showToast('Please wait for sync.');
+            }
+        } 
+    };
+    
+    window.openSponsorModal = (dbId = null) => {
+        if(dbId) {
+            const item = window.sponsorsData.find(i=>i.dbId===dbId);
+            document.getElementById('edit-sponsor-dbid').value = item.dbId;
             document.getElementById('edit-sponsor-name').value = item.name;
             document.getElementById('edit-sponsor-link').value = item.link || '';
             document.getElementById('edit-sponsor-media').value = item.media;
         } else {
-            ['edit-sponsor-id','edit-sponsor-name','edit-sponsor-link','edit-sponsor-media'].forEach(i => document.getElementById(i).value='');
+            ['edit-sponsor-dbid','edit-sponsor-name','edit-sponsor-link','edit-sponsor-media'].forEach(i => document.getElementById(i).value='');
         }
         document.getElementById('sponsor-modal').classList.remove('hidden');
         document.getElementById('sponsor-modal').classList.add('flex');
     };
-    window.closeSponsorModal = () => { document.getElementById('sponsor-modal').classList.add('hidden'); document.getElementById('sponsor-modal').classList.remove('flex'); };
-    window.saveSponsor = () => {
-        const id = document.getElementById('edit-sponsor-id').value;
-        const [name, link, media] = ['edit-sponsor-name', 'edit-sponsor-link', 'edit-sponsor-media'].map(i => document.getElementById(i).value);
-        if(!name || !media) return alert("নাম ও মিডিয়া লিংক আবশ্যক");
-        if(id) { const idx = window.sponsorsData.findIndex(i=>i.id==id); window.sponsorsData[idx] = {id:Number(id), name, type:'image', link, media}; }
-        else { window.sponsorsData.push({id: Date.now(), name, type:'image', link, media}); }
-        window.renderAdminSponsorsTable(); window.closeSponsorModal(); window.showToast('সংরক্ষিত হয়েছে!');
+    
+    window.closeSponsorModal = () => { 
+        document.getElementById('sponsor-modal').classList.add('hidden'); 
+        document.getElementById('sponsor-modal').classList.remove('flex'); 
+    };
+    
+    window.saveSponsor = async () => {
+        const dbId = document.getElementById('edit-sponsor-dbid').value;
+        const name = document.getElementById('edit-sponsor-name').value;
+        const link = document.getElementById('edit-sponsor-link').value;
+        const media = document.getElementById('edit-sponsor-media').value;
+        
+        if(!name || !media) return alert("নাম ও ছবির লিংক আবশ্যক (Name and Image URL are required)");
+        if(!auth.currentUser) return window.showToast("Please wait for database connection.");
+
+        try {
+            if(dbId) {
+                await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sponsors', dbId), { name, link, media });
+            } else {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'sponsors'), {
+                    id: Date.now(), name, link, media, type: 'image'
+                });
+            }
+            window.closeSponsorModal(); 
+            window.showToast('সংরক্ষিত হয়েছে! (Saved!)');
+        } catch(e) {
+            console.error(e);
+            window.showToast("ত্রুটি হয়েছে! (Error saving data)");
+        }
     };
 
     window.saveMarquee = () => { document.getElementById('marquee-text').innerText = document.getElementById('admin-marquee-input').value; window.showToast('আপডেট হয়েছে!'); };
