@@ -211,10 +211,10 @@
                 </p>
 
                 <div class="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4 flex-wrap">
-                    <button onclick="showParticipantView(); setTimeout(() => window.scrollTo({top: 0, behavior: 'smooth'}), 100);" class="inline-block bg-gradient-to-r from-puja-gold to-yellow-400 text-puja-darkred font-extrabold text-lg md:text-xl px-8 py-4 rounded-full shadow-[0_0_20px_rgba(251,194,34,0.8)] border-2 border-white transform hover:scale-105 transition-all w-full lg:w-auto">
+                    <button onclick="showParticipantView();" class="inline-block bg-gradient-to-r from-puja-gold to-yellow-400 text-puja-darkred font-extrabold text-lg md:text-xl px-8 py-4 rounded-full shadow-[0_0_20px_rgba(251,194,34,0.8)] border-2 border-white transform hover:scale-105 transition-all w-full lg:w-auto">
                         অংশগ্রহণ করুন <i class="fa-solid fa-masks-theater ml-2"></i>
                     </button>
-                    <button onclick="showParticipantView(); setTimeout(() => document.getElementById('participant-list-section').scrollIntoView({behavior: 'smooth', block: 'start'}), 200);" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold text-lg md:text-xl px-8 py-4 rounded-full shadow-[0_0_20px_rgba(124,58,237,0.5)] border-2 border-white transform hover:scale-105 transition-all w-full lg:w-auto">
+                    <button onclick="showParticipantListOnly();" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold text-lg md:text-xl px-8 py-4 rounded-full shadow-[0_0_20px_rgba(124,58,237,0.5)] border-2 border-white transform hover:scale-105 transition-all w-full lg:w-auto">
                         অংশগ্রহণকারীদের তালিকা <i class="fa-solid fa-list-ol ml-2"></i>
                     </button>
                     <a href="#events" class="inline-block bg-white/10 backdrop-blur-md text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:bg-white/20 transform hover:-translate-y-1 transition-all border border-white/30 w-full lg:w-auto">
@@ -538,7 +538,7 @@
             </button>
 
             <!-- Form Section -->
-            <section class="mb-20">
+            <section id="participant-form-section" class="mb-20">
                 <div class="text-center max-w-3xl mx-auto mb-12 fade-in-up">
                     <span class="text-puja-red font-bold tracking-widest uppercase mb-2 block"><i class="fa-solid fa-clipboard-user mr-2"></i>রেজিস্ট্রেশন</span>
                     <h2 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-6">সাংস্কৃতিক অনুষ্ঠানে অংশগ্রহণ</h2>
@@ -1330,7 +1330,18 @@
         window.scrollTo(0,0);
     }
     window.showHomeView = () => { hideAllPublicViews(); homeView.classList.remove('hidden'); }
-    window.showParticipantView = () => { hideAllPublicViews(); participantView.classList.remove('hidden'); }
+    window.showParticipantView = () => { 
+        hideAllPublicViews(); 
+        const formSection = document.getElementById('participant-form-section');
+        if(formSection) formSection.classList.remove('hidden');
+        participantView.classList.remove('hidden'); 
+    }
+    window.showParticipantListOnly = () => { 
+        hideAllPublicViews(); 
+        const formSection = document.getElementById('participant-form-section');
+        if(formSection) formSection.classList.add('hidden');
+        participantView.classList.remove('hidden'); 
+    }
     window.showAdBookingView = () => { hideAllPublicViews(); adBookingView.classList.remove('hidden'); }
 
     window.toggleFormFields = () => {
