@@ -1386,15 +1386,29 @@
             return;
         }
 
-        const name = document.getElementById('participant-name').value;
-        const village = document.getElementById('participant-village').value;
-        const phone = document.getElementById('participant-phone').value;
+        const name = document.getElementById('participant-name').value.trim();
+        const village = document.getElementById('participant-village').value.trim();
+        const phone = document.getElementById('participant-phone').value.trim();
         const type = document.getElementById('event-type').value;
         const date = document.getElementById('event-date').value;
-        const songName = document.getElementById('song-name-input').value;
+        const songName = document.getElementById('song-name-input').value.trim();
         const ageCategory = document.getElementById('age-category').value;
         const groupMembers = document.getElementById('group-members-input').value || '';
         const theme = document.getElementById('theme-input').value || '';
+        
+        // Prevent Duplicate Entries
+        const isDuplicate = window.participantsData.some(p => 
+            p.name === name && 
+            p.village === village && 
+            p.phone === phone && 
+            p.songName === songName && 
+            p.ageCategory === ageCategory
+        );
+
+        if (isDuplicate) {
+            window.showToast('এই বিবরণ দিয়ে আগে থেকেই আবেদন করা হয়েছে! (Entry already exists)');
+            return; // Stop the submission
+        }
         
         let defaultPhotoUrl = 'https://placehold.co/100x100/eeeeee/999999?text=No+Photo';
         const fileInput = document.getElementById('file-upload');
