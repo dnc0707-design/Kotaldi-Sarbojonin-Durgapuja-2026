@@ -1532,7 +1532,7 @@
         const adminGrid = document.getElementById('admin-gallery-grid');
 
         const galleryHTML = window.galleryData.map((img, idx) => `
-            <div class="group relative rounded-xl overflow-hidden shadow-lg h-64 fade-in-up ${idx === 1 ? 'sm:col-span-2' : ''}">
+            <div class="group relative rounded-xl overflow-hidden shadow-lg h-64 ${idx === 1 ? 'sm:col-span-2' : ''}">
                 <img src="${img.url}" alt="${img.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span class="text-white font-bold text-lg border-2 border-white px-4 py-2 rounded text-center">${img.title}</span>
