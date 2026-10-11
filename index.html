@@ -671,6 +671,7 @@
                                 <tr class="bg-puja-cream text-puja-darkred text-sm uppercase border-b border-gray-200">
                                     <th class="p-5 font-bold w-20 text-center">Photo</th>
                                     <th class="p-5 font-bold">Name / Group Name</th>
+                                    <th class="p-5 font-bold">Village</th>
                                     <th class="p-5 font-bold">Song Name</th>
                                     <th class="p-5 font-bold">Event Type</th>
                                     <th class="p-5 font-bold">Age Category</th>
@@ -950,6 +951,7 @@
                     <thead>
                         <tr class="bg-gray-100 text-gray-600 text-sm uppercase">
                             <th class="p-4 font-bold border-b w-24">নাম</th>
+                            <th class="p-4 font-bold border-b">গ্রাম</th>
                             <th class="p-4 font-bold border-b">বিভাগ</th>
                             <th class="p-4 font-bold border-b text-right">অ্যাকশন</th>
                         </tr>
@@ -1680,11 +1682,12 @@
 
         const tbody = document.getElementById('participants-table-body');
         if(tbody) {
-            tbody.innerHTML = filteredData.length === 0 ? '<tr><td colspan="6" class="text-center p-8 text-gray-500 italic">কোনো আবেদন নেই বা ফিল্টারের সাথে মিল নেই।</td></tr>' :
+            tbody.innerHTML = filteredData.length === 0 ? '<tr><td colspan="7" class="text-center p-8 text-gray-500 italic">কোনো আবেদন নেই বা ফিল্টারের সাথে মিল নেই।</td></tr>' :
             filteredData.map((p, index) => `
                 <tr class="border-b ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100 transition-colors">
                     <td class="p-4 text-center"><img src="${p.photo}" class="w-10 h-10 object-cover rounded-full mx-auto shadow-sm"></td>
                     <td class="p-4 font-bold text-gray-800">${p.name}</td>
+                    <td class="p-4 text-gray-700">${p.village || '-'}</td>
                     <td class="p-4 font-medium text-gray-700">${p.songName || '-'}</td>
                     <td class="p-4"><span class="bg-puja-cream text-puja-darkred px-2 py-1 rounded text-xs font-bold border border-puja-gold/30">${getTypeName(p.type)}</span></td>
                     <td class="p-4"><span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-bold border border-gray-200">${getAgeName(p.ageCategory)}</span></td>
@@ -1698,6 +1701,7 @@
             adminTbody.innerHTML = filteredData.map(p => `
                 <tr class="border-b hover:bg-gray-50">
                     <td class="p-4 font-bold">${p.name}</td>
+                    <td class="p-4 text-gray-700">${p.village || '-'}</td>
                     <td class="p-4">${getTypeName(p.type)}</td>
                     <td class="p-4 text-right whitespace-nowrap">
                         <button onclick="openEditParticipantModal('${p.dbId}')" class="text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded mr-2"><i class="fa-solid fa-pen-to-square"></i></button>
